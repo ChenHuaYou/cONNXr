@@ -82,5 +82,5 @@ Onnx__TensorProto** inference(Onnx__ModelProto *model, Onnx__TensorProto **input
 
   // TODO
   TRACE_EXIT(1);
-  return 0;
+  return all_context[model->graph->n_node-1].outputs;
 }
