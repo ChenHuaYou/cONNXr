@@ -62,7 +62,7 @@ ONNX_EXCLUDE=
 CC=gcc
 CFLAGS+=-std=c99
 CFLAGS+=-Wall
-CFLAGS+=-g3 -gdwarf -O2
+CFLAGS+=-g3 -gdwarf -O0
 # CFLAGS+=-Werror # CI jobs run with flag enabled
 ifdef TRACE_LEVEL
 CPPFLAGS+=-D "TRACE_LEVEL=$(TRACE_LEVEL)"

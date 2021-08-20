@@ -161,6 +161,7 @@ Onnx__ModelProto* openOnnxFile(char *fname){
   TRACE(1, true, "length of file is %ld", len);
 
   model = onnx__model_proto__unpack(NULL,len,ret);
+  free(ret);
 
   TRACE_EXIT(1);
   return model;

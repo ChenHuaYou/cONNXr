@@ -15,5 +15,6 @@ void resolve(Onnx__ModelProto *model,
 #define MAX_NUM_OF_NODES 200
 extern node_context all_context[MAX_NUM_OF_NODES];
 extern int _populatedIdx;
+void freeContext(node_context *nodePtr, Onnx__ModelProto *model);
 
 #endif

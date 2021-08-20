@@ -37,10 +37,10 @@ if __name__ == '__main__':
     #print_pb_file(
     #    "test/super_resolution/test_data_set_0/output_0.pb")
 
-    tensor   = onnx.load_tensor("test/super_resolution/test_data_set_0/output_0.pb")
+    tensor   = onnx.load_tensor("../test/super_resolution/test_data_set_0/output_0.pb")
     tensor.dims[:] = [1, 1, 672, 672]
-    onnx.save_tensor(tensor, "test/super_resolution/test_data_set_0/output_0_fixed.pb")
+    onnx.save_tensor(tensor, "../test/super_resolution/test_data_set_0/output_0_fixed.pb")
 
 
-    #print_pb_file(
-    #    "../test/node/test_maxpool_2d_same_upper/test_data_set_0/output_0.pb")
+    print_pb_file(
+        "../test/node/test_maxpool_2d_same_upper/test_data_set_0/output_0.pb")

@@ -3,6 +3,7 @@
 
 #include "onnx.pb-c.h"
 #include <errno.h>
+#include <csptr/smart_ptr.h>
 
 enum operator_status {
   OP_OK = 0,

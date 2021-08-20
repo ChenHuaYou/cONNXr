@@ -23,7 +23,7 @@ int main()
   Onnx__TensorProto *inp0set0 = openTensorProtoFile("../../test/mnist/test_data_set_0/input_0.pb");
   Onnx__TensorProto *out0set0 = openTensorProtoFile("../../test/mnist/test_data_set_0/output_0.pb");
 
-  Debug_PrintModelInformation(model);
+  //Debug_PrintModelInformation(model);
   convertRawDataOfTensorProto(inp0set0);
   convertRawDataOfTensorProto(out0set0);
 
@@ -39,7 +39,6 @@ int main()
 
   /* 11 is hardcoded, which is Plus214_Output_0 */
   compareAlmostEqualTensorProto(*output, out0set0);
-  free(output);
   free(inp0set0);
   free(out0set0);
   free(model);
