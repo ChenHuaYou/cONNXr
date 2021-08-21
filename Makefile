@@ -74,7 +74,9 @@ LDLIBS+=-lm
 
 INCDIR+=include
 INCDIR+=protobuf
+#INCDIR+=$(shell find include -type d)
 CPPFLAGS+=$(foreach DIR, $(INCDIR),-I $(DIR) )
+$(info $(INCDIR))
 
 SRCDIR+=src/operators
 SRCDIR+=protobuf
@@ -193,5 +195,8 @@ HELP_generate_custom_tests=generate the custom test models using the py scripts
 TARGET+=generate_custom_tests
 generate_custom_tests:
 	python test_data/generate_custom_tests.py generate-data -o test_data
+
+example:
+	$(MAKE) -C ./examples/example1
 
 include .Makefile.template

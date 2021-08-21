@@ -490,6 +490,7 @@ class OnnxOutput():
             self.variadic = (output.option.name == "Variadic")
             self.constraint = output.typeStr
             self.types = OnnxTypeList(output.types)
+        self.name = self.name.replace(".","")
 
     def text(self, prefix=""):
         lines = []

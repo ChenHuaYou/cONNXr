@@ -102,12 +102,12 @@ class Doxygen(Template):
 {inputs}
 {outputs}
 {attributes}
- *
- * @since version {version}
- *
+*
+* @since version {version}
+*
 {defs_filepath}
 {doc_ref}
- */
+*/
 '''
     def __init__(self, schema, path):
         self.schema = schema
@@ -129,6 +129,7 @@ class Doxygen(Template):
         self.outputs=self.schema.outputs.text(" * ")
         self.version=self.schema.version
         self.defs_filepath=f" * @see {self.scriptpath(self.schema.ref_file[0])}:{self.schema.ref_file[1]}"
+        self.doc = self.doc.replace("/*","//").replace("*/","")
 
     def _range(self, min, max):
         if (min == max):

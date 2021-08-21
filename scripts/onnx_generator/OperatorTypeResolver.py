@@ -104,7 +104,7 @@ class Resolve(Template):
             self.switch = Switch(schema, permutationsMap)
         else:
             self.types = "/* skipping constraint check, because no constraint exist */"
-            self.switch = f"executer = &{schema.operator_name};"
+            self.switch = f"executer = NULL;//&{schema.operator_name};"
 
 
 

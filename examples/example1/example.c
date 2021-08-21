@@ -12,7 +12,7 @@ int main()
 {
   /* Not working yet. Makefile need some love */
   
-  Onnx__ModelProto *model = openOnnxFile("../../test/mnist/model.onnx");
+  Onnx__ModelProto *model = openOnnxFile("./test/mnist/model.onnx");
   if (model == NULL)
   {
     perror("Error when opening the onnx file\n");
@@ -20,8 +20,8 @@ int main()
   }
 
   /* TODO: Run some inference on MNIST examples */
-  Onnx__TensorProto *inp0set0 = openTensorProtoFile("../../test/mnist/test_data_set_0/input_0.pb");
-  Onnx__TensorProto *out0set0 = openTensorProtoFile("../../test/mnist/test_data_set_0/output_0.pb");
+  Onnx__TensorProto *inp0set0 = openTensorProtoFile("./test/mnist/test_data_set_0/input_0.pb");
+  Onnx__TensorProto *out0set0 = openTensorProtoFile("./test/mnist/test_data_set_0/output_0.pb");
 
   //Debug_PrintModelInformation(model);
   convertRawDataOfTensorProto(inp0set0);

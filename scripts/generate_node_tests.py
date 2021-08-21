@@ -42,6 +42,8 @@ def numpy_to_pb(name, np_data, out_filename):
     tensor = numpy_helper.from_array(np_data, name)
     onnx.save_tensor(tensor, out_filename)
 
+model_path = '../test/mnist/model.onnx'
+data_path = '../test/mnist/test_data_set_0/input_0.pb'
 model_onnx = onnx.load('../test/tiny_yolov2/Model.onnx')
 test_data_dir = '../test/tiny_yolov2/test_data_set_0'
 
@@ -77,18 +79,19 @@ print(outputs_list)
 for idx, out in enumerate(outputs_list):
     name = str(idx) + "_" + out
     dataset = "test_data_set_0"
-    os.mkdir(name)
-    os.mkdir(name + "/" + dataset)
-    modelPath = name + "/" + name + ".onnx"
+    os.makedirs('test/' + name,exist_ok=True)
+    os.makedirs('test/' + name + "/" + dataset,exist_ok=True)
+    modelPath = 'test/' + name + "/" + name + ".onnx"
     model_output = select_model_inputs_outputs(model_onnx, out)
     save_onnx_model(model_output, modelPath)
     sess = rt.InferenceSession(modelPath)
     numX = sess.run(None, inputDict)
-    print()
-    print("Generating idx=", idx)
-    print(out)
-    print(numX)
+    print(list(enumerate_model_node_outputs(model_output)))
+    #print()
+    #print("Generating idx=", idx)
+    #print(out)
+    #print(numX)
 
     # hardcoded for 1 output
-    numpy_to_pb(out, numX[0], name + "/" + dataset + "/" + "output_0.pb")
-    numpy_to_pb(out, inputs[0], name + "/" + dataset + "/" + "input_0.pb")
+    #numpy_to_pb(out, numX[0], name + "/" + dataset + "/" + "output_0.pb")
+    #numpy_to_pb(out, inputs[0], name + "/" + dataset + "/" + "input_0.pb")

@@ -1,2 +1,4 @@
 -I./protobuf
 -I./include
+-I./include/operators/ai.onnx.preview.training/Momentum/1/
+-I./include/operators/ai.onnx/Constant/1/

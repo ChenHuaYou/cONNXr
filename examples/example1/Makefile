@@ -1,7 +1,8 @@
 CFLAGS=-fsanitize=undefined,address,leak
 INCLUDE=-I../../include/ -I../../protobuf/ -I./include/
-LIBS=-lconnxr -lm -lcsptr
+LIBDIR=-L../../build/
+LIBS=-lconnxr -lm
 build:
-	gcc $(CFLAGS) $(INCLUDE) -g -o0 -std=c99 -o example example.c -L. $(LIBS)
+	gcc $(CFLAGS) $(INCLUDE) -g -o0 -std=c99 -o example example.c $(LIBDIR) $(LIBS)
 clean:
 	rm -f *.o *.a *.gch
