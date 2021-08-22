@@ -42,7 +42,7 @@
 
 operator_status
 prepare_operator__ai_onnx__identity__1(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 extern operator_info info_operator__ai_onnx__identity__1;
@@ -53,12 +53,12 @@ typedef struct {
 
 operator_executer
 resolve_operator__ai_onnx__identity__1(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 operator_status
 execute_operator__ai_onnx__identity__1(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 # endif

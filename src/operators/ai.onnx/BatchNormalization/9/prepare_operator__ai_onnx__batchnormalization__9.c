@@ -6,7 +6,7 @@
 
 operator_status
 prepare_operator__ai_onnx__batchnormalization__9(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -15,11 +15,11 @@ prepare_operator__ai_onnx__batchnormalization__9(
 
     /* UNCOMMENT AS NEEDED */
 
-    Onnx__TensorProto *i_X = searchInputByName(ctx, 0);
-    // Onnx__TensorProto *i_scale = searchInputByName(ctx, 1);
-    // Onnx__TensorProto *i_B = searchInputByName(ctx, 2);
-    // Onnx__TensorProto *i_mean = searchInputByName(ctx, 3);
-    // Onnx__TensorProto *i_var = searchInputByName(ctx, 4);
+    Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
+    // Onnx__TensorProto *i_scale = searchInputByIndex(ctx, 1);
+    // Onnx__TensorProto *i_B = searchInputByIndex(ctx, 2);
+    // Onnx__TensorProto *i_mean = searchInputByIndex(ctx, 3);
+    // Onnx__TensorProto *i_var = searchInputByIndex(ctx, 4);
 
     TRACE_TENSOR(2, true, i_X);
     // TRACE_TENSOR(2, true, i_scale);
@@ -33,11 +33,11 @@ prepare_operator__ai_onnx__batchnormalization__9(
     TRACE_ATTRIBUTE(2, a_epsilon, a_epsilon);
     // TRACE_ATTRIBUTE(2, a_momentum, a_momentum);
 
-    Onnx__TensorProto *o_Y = searchOutputByName(ctx, 0);
-    // Onnx__TensorProto *o_mean = searchOutputByName(ctx, 1);
-    // Onnx__TensorProto *o_var = searchOutputByName(ctx, 2);
-    // Onnx__TensorProto *o_saved_mean = searchOutputByName(ctx, 3);
-    // Onnx__TensorProto *o_saved_var = searchOutputByName(ctx, 4);
+    Onnx__TensorProto *o_Y = searchOutputByIndex(ctx, 0);
+    // Onnx__TensorProto *o_mean = searchOutputByIndex(ctx, 1);
+    // Onnx__TensorProto *o_var = searchOutputByIndex(ctx, 2);
+    // Onnx__TensorProto *o_saved_mean = searchOutputByIndex(ctx, 3);
+    // Onnx__TensorProto *o_saved_var = searchOutputByIndex(ctx, 4);
 
     /* ALLOCATE AND INITIALIZE CONTEXT HERE IF NEEDED */
 

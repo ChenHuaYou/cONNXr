@@ -9,18 +9,18 @@
 #include "utils.h"
 #include "operators.h"
 
-int operator_convinteger(node_context *ctx)
+int operator_convinteger(Onnx__NodeProto *ctx)
 {
   TRACE_LEVEL0("Calling operator_convinteger\n");
 
   /* TODO This is almost a copy paste from conv. Review!*/
 
-  Onnx__TensorProto *X = searchInputByName(ctx, 0);
-  Onnx__TensorProto *W = searchInputByName(ctx, 1);
-  Onnx__TensorProto *x_zero_point = searchInputByName(ctx, 2);
-  Onnx__TensorProto *w_zero_point = searchInputByName(ctx, 3);
+  Onnx__TensorProto *X = searchInputByIndex(ctx, 0);
+  Onnx__TensorProto *W = searchInputByIndex(ctx, 1);
+  Onnx__TensorProto *x_zero_point = searchInputByIndex(ctx, 2);
+  Onnx__TensorProto *w_zero_point = searchInputByIndex(ctx, 3);
 
-  Onnx__TensorProto *y = searchOutputByName(ctx, 0);
+  Onnx__TensorProto *y = searchOutputByIndex(ctx, 0);
 
   if (X->n_dims != 4){
     /* TODO: Check some conditions. For example if a specific

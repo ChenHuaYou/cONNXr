@@ -117,7 +117,7 @@
 
 operator_status
 prepare_operator__ai_onnx__maxpool__12(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 extern operator_info info_operator__ai_onnx__maxpool__12;
@@ -140,32 +140,32 @@ typedef struct {
 
 operator_executer
 resolve_operator__ai_onnx__maxpool__12(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 operator_status
 execute_operator__ai_onnx__maxpool__12__T_tensor_double(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 operator_status
 execute_operator__ai_onnx__maxpool__12__T_tensor_float(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 operator_status
 execute_operator__ai_onnx__maxpool__12__T_tensor_float16(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 operator_status
 execute_operator__ai_onnx__maxpool__12__T_tensor_int8(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 operator_status
 execute_operator__ai_onnx__maxpool__12__T_tensor_uint8(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 # endif

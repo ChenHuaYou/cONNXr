@@ -6,11 +6,9 @@
 #include "utils.h"
 #include "tracing.h"
 
+
 // TODO Rethink this function?
-Onnx__TensorProto* searchTensorProtoByName(Onnx__ModelProto *model,
-                                           Onnx__TensorProto **inputs,
-                                           int nInputs,
-                                           char *name)
+Onnx__TensorProto* searchTensorProtoByName(Onnx__ModelProto *model,char *name)
 {
   TRACE_ENTRY(1);
   TRACE(1, true, "Searching for TensorProto with name=%s", name);
@@ -25,34 +23,24 @@ Onnx__TensorProto* searchTensorProtoByName(Onnx__ModelProto *model,
       return model->graph->initializer[initializer];
     }
   }
-
-  // Search in inputs to the model
-  for (int inIdx = 0; inIdx < nInputs; inIdx++)
-  {
-    if (!strcmp(inputs[inIdx]->name, name))
-    {
-      TRACE(1, true, "Found TensorProto in inputs to de model with name=%s", inputs[inIdx]->name);
-      TRACE_EXIT(1);
-      return inputs[inIdx];
-    }
-  }
-
-  // Search in new context. Only for outputs
-  if (_populatedIdx != -1)
-  {
-    // Iterate all populated nodes
-    for (int node_i = 0; node_i < _populatedIdx+1; node_i++)
-    {
-      for (int output_i = 0; output_i < all_context[node_i].onnx_node->n_output; output_i++){
-        TRACE(1, true, "Searching %s, found %s", name, all_context[node_i].outputs[output_i]->name);
-        if (!strcmp(all_context[node_i].outputs[output_i]->name, name))
-        {
-          TRACE(1, true, "Found TensorProto in outputs from new context name=%s", all_context[node_i].outputs[output_i]->name);
-          TRACE_EXIT(1);
-          return all_context[node_i].outputs[output_i];
-        }
+  // Search in previous node's output
+  for (int i_node = 0; i_node < model->graph->n_node; i_node++){
+      for (int i_output = 0; i_output < model->graph->node[i_node]->n_output; i_output++){
+          if (!strcmp(model->graph->node[i_node]->output[i_output], name)){
+              TRACE(1, true, "Found TensorProto in node's ouput list with name=%s", model->graph->initializer[initializer]->name);
+              TRACE_EXIT(1);
+              return model->graph->node[i_node]->outputs[i_output];
+          }
       }
-    }
+  }
+  // Search in graph's inputs
+  for (int i_input = 0; i_input < model->graph->n_input; i_input++){
+      if (!strcmp(model->graph->input[i_input]->name, name)){
+          TRACE(1, true, "Found TensorProto in input list with name=%s", model->graph->initializer[initializer]->name);
+          TRACE_EXIT(1);
+          return model->graph->inputs[i_input];
+      }
+
   }
 
   TRACE_WARN(1, true, "%s was not found anywhere, maybe you should worry", name);
@@ -60,12 +48,12 @@ Onnx__TensorProto* searchTensorProtoByName(Onnx__ModelProto *model,
   return NULL;
 }
 
-Onnx__TensorProto* searchInputByName(node_context *ctx,
+Onnx__TensorProto* searchInputByIndex(Onnx__NodeProto *ctx,
                                      int index)
 {
   TRACE_ENTRY(1);
   // Just return null if we are accesing an optional parameters that is not present
-  if (index > ctx->onnx_node->n_input-1)
+  if (index > ctx->n_input-1)
   {
     TRACE_WARN(1, true, "index (%d) exceeds number of inputs (%zu)!", index, ctx->onnx_node->n_input);
     TRACE_EXIT(1);
@@ -73,19 +61,19 @@ Onnx__TensorProto* searchInputByName(node_context *ctx,
   }
 
   // Just return null if input name is empty (marked as skipped)
-  if (!*ctx->onnx_node->input[index]) {
+  if (!*ctx->input[index]) {
     TRACE_WARN(1, true, "index (%d) specifies skipped input!", index);
     TRACE_EXIT(1);
     return NULL;
   }
 
-  for (int i = 0; i < ctx->onnx_node->n_input; i++)
+  for (int i = 0; i < ctx->n_input; i++)
   {
     if (!ctx->inputs[i]) {
       continue;
     }
     TRACE(2, true, "Searching inputs %s, %s", ctx->inputs[i]->name, ctx->onnx_node->input[index]);
-    if (!strcmp(ctx->inputs[i]->name, ctx->onnx_node->input[index]))
+    if (!strcmp(ctx->inputs[i]->name, ctx->input[index]))
     {
       TRACE_EXIT(1);
       return ctx->inputs[i];
@@ -96,22 +84,22 @@ Onnx__TensorProto* searchInputByName(node_context *ctx,
   return NULL;
 }
 
-Onnx__TensorProto* searchOutputByName(node_context *ctx,
+Onnx__TensorProto* searchOutputByIndex(Onnx__NodeProto *ctx,
                                       int index)
 {
   TRACE_ENTRY(1);
   //TODO skipped outputs, see inputs!
   // Just return null if we are accesing an optional parameters that is not present
-  if (index > ctx->onnx_node->n_output-1)
+  if (index > ctx->n_output-1)
   {
     TRACE_WARN(1, true, "index (%d) exceeds number of outputs (%zu)!", index, ctx->onnx_node->n_output);
     TRACE_EXIT(1);
     return NULL;
   }
 
-  for (int i = 0; i < ctx->onnx_node->n_output; i++)
+  for (int i = 0; i < ctx->n_output; i++)
   {
-    if (!strcmp(ctx->outputs[i]->name, ctx->onnx_node->output[index]))
+    if (!strcmp(ctx->outputs[i]->name, ctx->output[index]))
     {
       TRACE_EXIT(1);
       return ctx->outputs[i];

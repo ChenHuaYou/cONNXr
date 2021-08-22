@@ -5,7 +5,7 @@
 
 operator_status
 prepare_operator__ai_onnx__leakyrelu__6(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -14,7 +14,7 @@ prepare_operator__ai_onnx__leakyrelu__6(
 
     /* UNCOMMENT AS NEEDED */
 
-    Onnx__TensorProto *i_X = searchInputByName(ctx, 0);
+    Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
 
     TRACE_TENSOR(2, true, i_X);
 
@@ -22,7 +22,7 @@ prepare_operator__ai_onnx__leakyrelu__6(
 
     TRACE_ATTRIBUTE(2, a_alpha, a_alpha);
 
-    Onnx__TensorProto *o_Y = searchOutputByName(ctx, 0);
+    Onnx__TensorProto *o_Y = searchOutputByIndex(ctx, 0);
 
     /* ALLOCATE AND INITIALIZE CONTEXT HERE IF NEEDED */
 

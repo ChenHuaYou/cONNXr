@@ -24,13 +24,13 @@
  *  \param[in/out]  output      Array of pointer to the outputs of the operators
  *  \return         error       Different than 0 if an error was produced
  */
-int operator_cast(node_context *ctx)
+int operator_cast(Onnx__NodeProto *ctx)
 {
   TRACE_LEVEL0("Calling operator_cast\n");
 
-  Onnx__TensorProto *input = searchInputByName(ctx, 0);
+  Onnx__TensorProto *input = searchInputByIndex(ctx, 0);
 
-  Onnx__TensorProto *output = searchOutputByName(ctx, 0);
+  Onnx__TensorProto *output = searchOutputByIndex(ctx, 0);
 
   debug_print_dims(input->n_dims, input->dims);
 

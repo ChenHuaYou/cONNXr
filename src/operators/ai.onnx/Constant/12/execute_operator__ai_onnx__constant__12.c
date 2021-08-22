@@ -5,7 +5,7 @@
 
 operator_status
 execute_operator__ai_onnx__constant__12(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -38,7 +38,7 @@ execute_operator__ai_onnx__constant__12(
     // TRACE_ARRAY(2, true, value_strings, , n_value_strings, "\"%s\"");
 
     __attribute__((unused))
-    Onnx__TensorProto *o_output = searchOutputByName(ctx, 0);
+    Onnx__TensorProto *o_output = searchOutputByIndex(ctx, 0);
 
     TRACE_TENSOR(2, true, o_output);
 

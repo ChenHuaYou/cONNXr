@@ -36,7 +36,7 @@
 
 operator_status
 prepare_operator__ai_onnx__leakyrelu__6(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 extern operator_info info_operator__ai_onnx__leakyrelu__6;
@@ -48,22 +48,22 @@ typedef struct {
 
 operator_executer
 resolve_operator__ai_onnx__leakyrelu__6(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 operator_status
 execute_operator__ai_onnx__leakyrelu__6__T_tensor_double(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 operator_status
 execute_operator__ai_onnx__leakyrelu__6__T_tensor_float(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 operator_status
 execute_operator__ai_onnx__leakyrelu__6__T_tensor_float16(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 
 # endif

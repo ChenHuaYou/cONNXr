@@ -5,7 +5,7 @@
 
 operator_status
 execute_operator__ai_onnx__add__7__T_tensor_float(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -14,15 +14,15 @@ execute_operator__ai_onnx__add__7__T_tensor_float(
 
     /* UNCOMMENT AS NEEDED */
 
-    Onnx__TensorProto *i_A = searchInputByName(ctx, 0);
-    Onnx__TensorProto *i_B = searchInputByName(ctx, 1);
+    Onnx__TensorProto *i_A = searchInputByIndex(ctx, 0);
+    Onnx__TensorProto *i_B = searchInputByIndex(ctx, 1);
 
     TRACE_TENSOR(2, true, i_A);
     TRACE_TENSOR(2, true, i_B);
 
     // context_operator__ai_onnx__add__7 *op_ctx = ctx->executer_context;
 
-    Onnx__TensorProto *o_C = searchOutputByName(ctx, 0);
+    Onnx__TensorProto *o_C = searchOutputByIndex(ctx, 0);
 
     TRACE_TENSOR(2, true, o_C);
 

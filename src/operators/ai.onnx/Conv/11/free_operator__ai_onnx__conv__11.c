@@ -5,7 +5,7 @@
 
 void
 free_operator__ai_onnx__conv__11(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -14,9 +14,9 @@ free_operator__ai_onnx__conv__11(
 
     /* UNCOMMENT AS NEEDED */
 
-    // Onnx__TensorProto *i_X = searchInputByName(ctx, 0);
-    // Onnx__TensorProto *i_W = searchInputByName(ctx, 1);
-    // Onnx__TensorProto *i_B = searchInputByName(ctx, 2);
+    // Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
+    // Onnx__TensorProto *i_W = searchInputByIndex(ctx, 1);
+    // Onnx__TensorProto *i_B = searchInputByIndex(ctx, 2);
 
     // TRACE_TENSOR(2, true, i_X);
     // TRACE_TENSOR(2, true, i_W);
@@ -36,7 +36,7 @@ free_operator__ai_onnx__conv__11(
     // TRACE_ATTRIBUTE(2, a_pads, a_pads);
     // TRACE_ATTRIBUTE(2, a_strides, a_strides);
 
-    // Onnx__TensorProto *o_Y = searchOutputByName(ctx, 0);
+    // Onnx__TensorProto *o_Y = searchOutputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, o_Y);
 

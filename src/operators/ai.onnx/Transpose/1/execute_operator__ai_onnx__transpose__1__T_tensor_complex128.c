@@ -5,7 +5,7 @@
 
 operator_status
 execute_operator__ai_onnx__transpose__1__T_tensor_complex128(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -14,7 +14,7 @@ execute_operator__ai_onnx__transpose__1__T_tensor_complex128(
 
     /* UNCOMMENT AS NEEDED */
 
-    // Onnx__TensorProto *i_data = searchInputByName(ctx, 0);
+    // Onnx__TensorProto *i_data = searchInputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, i_data);
 
@@ -25,7 +25,7 @@ execute_operator__ai_onnx__transpose__1__T_tensor_complex128(
 
     // TRACE_ARRAY(2, true, perm, , n_perm, "%" PRId64);
 
-    // Onnx__TensorProto *o_transposed = searchOutputByName(ctx, 0);
+    // Onnx__TensorProto *o_transposed = searchOutputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, o_transposed);
 

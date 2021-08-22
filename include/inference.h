@@ -4,8 +4,7 @@
 #include "operators/operator.h"
 
 Onnx__TensorProto** inference(Onnx__ModelProto *model,
-                              Onnx__TensorProto **inputs,
-                              int nInputs);
+                              Onnx__TensorProto **inputs);
 
 void resolve(Onnx__ModelProto *model,
              Onnx__TensorProto **inputs,
@@ -13,8 +12,5 @@ void resolve(Onnx__ModelProto *model,
 
 /* TODO Shouldn't be global */
 #define MAX_NUM_OF_NODES 200
-extern node_context all_context[MAX_NUM_OF_NODES];
-extern int _populatedIdx;
-void freeContext(node_context *nodePtr, Onnx__ModelProto *model);
 
 #endif

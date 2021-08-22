@@ -5,7 +5,7 @@
 
 operator_status
 prepare_operator__ai_onnx__argmax__12(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -14,7 +14,7 @@ prepare_operator__ai_onnx__argmax__12(
 
     /* UNCOMMENT AS NEEDED */
 
-    Onnx__TensorProto *i_data = searchInputByName(ctx, 0);
+    Onnx__TensorProto *i_data = searchInputByIndex(ctx, 0);
 
     TRACE_TENSOR(2, true, i_data);
 
@@ -26,7 +26,7 @@ prepare_operator__ai_onnx__argmax__12(
     // TRACE_ATTRIBUTE(2, a_keepdims, a_keepdims);
     // TRACE_ATTRIBUTE(2, a_select_last_index, a_select_last_index);
 
-    Onnx__TensorProto *o_reduced = searchOutputByName(ctx, 0);
+    Onnx__TensorProto *o_reduced = searchOutputByIndex(ctx, 0);
 
     /* ALLOCATE AND INITIALIZE CONTEXT HERE IF NEEDED */
 

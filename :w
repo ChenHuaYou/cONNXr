@@ -319,6 +319,10 @@ struct  _Onnx__ValueInfoProto
    * A human-readable documentation for this value. Markdown is allowed.
    */
   char *doc_string;
+  /*
+   * tensor data of the value
+   */
+  Onnx__TensorProto *value;
 };
 #define ONNX__VALUE_INFO_PROTO__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&onnx__value_info_proto__descriptor) \
@@ -343,6 +347,7 @@ enum operator_status {
 };
 
 typedef enum operator_status operator_status;
+typedef struct node_context node_context;
 typedef operator_status (*operator_preparer)(Onnx__NodeProto *ctx);
 typedef operator_status (*operator_executer)(Onnx__NodeProto *ctx);
 typedef operator_executer (*operator_resolver)(Onnx__NodeProto *ctx);
@@ -550,11 +555,8 @@ struct  _Onnx__GraphProto
    */
   size_t n_input;
   Onnx__ValueInfoProto **input;
-  Onnx__TensorProto **inputs;
-
   size_t n_output;
   Onnx__ValueInfoProto **output;
-  Onnx__TensorProto **outputs;
   /*
    * Information for the values in the graph. The ValueInfoProto.name's
    * must be distinct. It is optional for a value to appear in value_info list.

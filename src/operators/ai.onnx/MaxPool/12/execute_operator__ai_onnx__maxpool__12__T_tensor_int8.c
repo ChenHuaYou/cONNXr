@@ -5,7 +5,7 @@
 
 operator_status
 execute_operator__ai_onnx__maxpool__12__T_tensor_int8(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -14,7 +14,7 @@ execute_operator__ai_onnx__maxpool__12__T_tensor_int8(
 
     /* UNCOMMENT AS NEEDED */
 
-    // Onnx__TensorProto *i_X = searchInputByName(ctx, 0);
+    // Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, i_X);
 
@@ -40,8 +40,8 @@ execute_operator__ai_onnx__maxpool__12__T_tensor_int8(
     // TRACE_VAR(2, true, storage_order, "%" PRId64);
     // TRACE_ARRAY(2, true, strides, , n_strides, "%" PRId64);
 
-    // Onnx__TensorProto *o_Y = searchOutputByName(ctx, 0);
-    // Onnx__TensorProto *o_Indices = searchOutputByName(ctx, 1);
+    // Onnx__TensorProto *o_Y = searchOutputByIndex(ctx, 0);
+    // Onnx__TensorProto *o_Indices = searchOutputByIndex(ctx, 1);
 
     // TRACE_TENSOR(2, true, o_Y);
     // TRACE_TENSOR(2, Indices, o_Indices);

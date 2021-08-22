@@ -30,28 +30,28 @@ class TestMnist(TestModel, unittest.TestCase):
     n_outputs = 1
 
 
-class TestMobilenetv2(TestModel, unittest.TestCase):
-    id = "mobilenetv2"
-    path = "test/mobilenetv2-1.0/mobilenetv2-1.0.onnx"
-    io = ["test/mobilenetv2-1.0/test_data_set_0"]
-    n_inputs = 1
-    n_outputs = 1
-
-
-class TestSuperresolution(TestModel, unittest.TestCase):
-    id = "super_resolution"
-    path = "test/super_resolution/super_resolution.onnx"
-    io = ["test/super_resolution/test_data_set_0"]
-    n_inputs = 1
-    n_outputs = 1
-
-
-class TestTinyyolov2(TestModel, unittest.TestCase):
-    id = "tinyyolov2"
-    path = "test/tiny_yolov2/Model.onnx"
-    io = ["test/tiny_yolov2/test_data_set_0"]
-    n_inputs = 1
-    n_outputs = 1
+#class TestMobilenetv2(TestModel, unittest.TestCase):
+#    id = "mobilenetv2"
+#    path = "test/mobilenetv2-1.0/mobilenetv2-1.0.onnx"
+#    io = ["test/mobilenetv2-1.0/test_data_set_0"]
+#    n_inputs = 1
+#    n_outputs = 1
+#
+#
+#class TestSuperresolution(TestModel, unittest.TestCase):
+#    id = "super_resolution"
+#    path = "test/super_resolution/super_resolution.onnx"
+#    io = ["test/super_resolution/test_data_set_0"]
+#    n_inputs = 1
+#    n_outputs = 1
+#
+#
+#class TestTinyyolov2(TestModel, unittest.TestCase):
+#    id = "tinyyolov2"
+#    path = "test/tiny_yolov2/Model.onnx"
+#    io = ["test/tiny_yolov2/test_data_set_0"]
+#    n_inputs = 1
+#    n_outputs = 1
 
 
 if __name__ == "__main__":

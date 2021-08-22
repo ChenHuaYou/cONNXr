@@ -6,7 +6,7 @@
 
 operator_executer
 resolve_operator__ai_onnx__leakyrelu__6(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 ){
     operator_executer executer = NULL;
     {

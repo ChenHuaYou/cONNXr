@@ -6,7 +6,7 @@
 
 operator_status
 prepare_operator__ai_onnx__constant__12(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -33,7 +33,7 @@ prepare_operator__ai_onnx__constant__12(
     // TRACE_ATTRIBUTE(2, a_value_string, a_value_string);
     // TRACE_ATTRIBUTE(2, a_value_strings, a_value_strings);
 
-    Onnx__TensorProto *o_output = searchOutputByName(ctx, 0);
+    Onnx__TensorProto *o_output = searchOutputByIndex(ctx, 0);
 
     /* ALLOCATE AND INITIALIZE CONTEXT HERE IF NEEDED */
 

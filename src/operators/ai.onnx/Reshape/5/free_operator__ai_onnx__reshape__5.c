@@ -5,7 +5,7 @@
 
 void
 free_operator__ai_onnx__reshape__5(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -14,8 +14,8 @@ free_operator__ai_onnx__reshape__5(
 
     /* UNCOMMENT AS NEEDED */
 
-    // Onnx__TensorProto *i_data = searchInputByName(ctx, 0);
-    // Onnx__TensorProto *i_shape = searchInputByName(ctx, 1);
+    // Onnx__TensorProto *i_data = searchInputByIndex(ctx, 0);
+    // Onnx__TensorProto *i_shape = searchInputByIndex(ctx, 1);
 
     // TRACE_TENSOR(2, true, i_data);
     // TRACE_TENSOR(2, true, i_shape);
@@ -24,7 +24,7 @@ free_operator__ai_onnx__reshape__5(
 
     
 
-    // Onnx__TensorProto *o_reshaped = searchOutputByName(ctx, 0);
+    // Onnx__TensorProto *o_reshaped = searchOutputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, o_reshaped);
 

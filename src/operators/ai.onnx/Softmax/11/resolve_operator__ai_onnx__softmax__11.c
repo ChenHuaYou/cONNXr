@@ -6,7 +6,7 @@
 
 operator_executer
 resolve_operator__ai_onnx__softmax__11(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 ){
     operator_executer executer = NULL;
     {

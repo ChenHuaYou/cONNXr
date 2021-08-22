@@ -7,7 +7,7 @@
 
 operator_status
 prepare_operator__ai_onnx__maxpool__12(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -16,7 +16,7 @@ prepare_operator__ai_onnx__maxpool__12(
 
     /* UNCOMMENT AS NEEDED */
 
-    Onnx__TensorProto *i_X = searchInputByName(ctx, 0);
+    Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
 
     TRACE_TENSOR(2, true, i_X);
 
@@ -36,8 +36,8 @@ prepare_operator__ai_onnx__maxpool__12(
     // TRACE_ATTRIBUTE(2, a_storage_order, a_storage_order);
     TRACE_ATTRIBUTE(2, a_strides, a_strides);
 
-    Onnx__TensorProto *o_Y = searchOutputByName(ctx, 0);
-    // Onnx__TensorProto *o_Indices = searchOutputByName(ctx, 1);
+    Onnx__TensorProto *o_Y = searchOutputByIndex(ctx, 0);
+    // Onnx__TensorProto *o_Indices = searchOutputByIndex(ctx, 1);
 
     /* ALLOCATE AND INITIALIZE CONTEXT HERE IF NEEDED */
 

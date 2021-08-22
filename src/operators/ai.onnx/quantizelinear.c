@@ -20,15 +20,15 @@ int32_t divAndRoundEven(float a, float b)
   return AdivB;
 }
 
-int operator_quantizelinear(node_context *ctx)
+int operator_quantizelinear(Onnx__NodeProto *ctx)
 {
   TRACE_LEVEL0("Calling operator_quantizelinear\n");
 
-  Onnx__TensorProto *X = searchInputByName(ctx, 0);
-  Onnx__TensorProto *y_scale = searchInputByName(ctx, 1);
-  Onnx__TensorProto *y_zero_point = searchInputByName(ctx, 2);
+  Onnx__TensorProto *X = searchInputByIndex(ctx, 0);
+  Onnx__TensorProto *y_scale = searchInputByIndex(ctx, 1);
+  Onnx__TensorProto *y_zero_point = searchInputByIndex(ctx, 2);
 
-  Onnx__TensorProto *y = searchOutputByName(ctx, 0);
+  Onnx__TensorProto *y = searchOutputByIndex(ctx, 0);
 
   if (0){
     /* TODO: Check some conditions. For example if a specific

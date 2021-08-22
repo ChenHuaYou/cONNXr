@@ -6,7 +6,7 @@
 
 operator_executer
 resolve_operator__ai_onnx__reshape__5(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 ){
     operator_executer executer = NULL;
     {

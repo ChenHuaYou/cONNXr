@@ -18,7 +18,7 @@ static inline int calcArrayPos4D(int x, int y, int outputChannel, int intputChan
 
 operator_status
 execute_operator__ai_onnx__convtranspose__11__T_tensor_float(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -27,9 +27,9 @@ execute_operator__ai_onnx__convtranspose__11__T_tensor_float(
 
     /* UNCOMMENT AS NEEDED */
 
-    Onnx__TensorProto *i_X = searchInputByName(ctx, 0);
-    Onnx__TensorProto *i_W = searchInputByName(ctx, 1);
-    Onnx__TensorProto *i_B = searchInputByName(ctx, 2);
+    Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
+    Onnx__TensorProto *i_W = searchInputByIndex(ctx, 1);
+    Onnx__TensorProto *i_B = searchInputByIndex(ctx, 2);
 
     TRACE_TENSOR(2, true, i_X);
     TRACE_TENSOR(2, true, i_W);
@@ -63,7 +63,7 @@ execute_operator__ai_onnx__convtranspose__11__T_tensor_float(
     TRACE_ARRAY(2, true, pads, , n_pads, "%" PRId64);
     TRACE_ARRAY(2, true, strides, , n_strides, "%" PRId64);
 
-    Onnx__TensorProto *o_Y = searchOutputByName(ctx, 0);
+    Onnx__TensorProto *o_Y = searchOutputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, o_Y);
 

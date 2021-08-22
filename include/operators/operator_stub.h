@@ -6,8 +6,8 @@
 
 extern operator_info operator_stub_info;
 
-operator_status operator_stub(node_context *ctx);
+operator_status operator_stub(Onnx__NodeProto *ctx);
 
-operator_executer operator_stub_resolver(node_context *ctx);
+operator_executer operator_stub_resolver(Onnx__NodeProto *ctx);
 
 #endif

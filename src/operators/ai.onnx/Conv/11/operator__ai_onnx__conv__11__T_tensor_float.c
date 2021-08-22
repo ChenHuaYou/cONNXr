@@ -12,18 +12,18 @@
 
 operator_status
 operator__ai_onnx__conv__11__T_tensor_float(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
   TRACE_ENTRY(1);
 
   TRACE_NODE(2, true, ctx->onnx_node);
 
-  Onnx__TensorProto *t_X = searchInputByName(ctx, 0);
-  Onnx__TensorProto *t_W = searchInputByName(ctx, 1);
-  Onnx__TensorProto *t_B = searchInputByName(ctx, 2);
+  Onnx__TensorProto *t_X = searchInputByIndex(ctx, 0);
+  Onnx__TensorProto *t_W = searchInputByIndex(ctx, 1);
+  Onnx__TensorProto *t_B = searchInputByIndex(ctx, 2);
 
-  Onnx__TensorProto *t_Y = searchOutputByName(ctx, 0);
+  Onnx__TensorProto *t_Y = searchOutputByIndex(ctx, 0);
 
   TRACE_TENSOR(2, true, t_X);
   TRACE_TENSOR(2, true, t_W);

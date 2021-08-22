@@ -30,7 +30,7 @@ softmax(float *in, float *out, int num) {
 
 operator_status
 execute_operator__ai_onnx__softmax__11__T_tensor_float(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -39,7 +39,7 @@ execute_operator__ai_onnx__softmax__11__T_tensor_float(
 
     /* UNCOMMENT AS NEEDED */
 
-    Onnx__TensorProto *i_input = searchInputByName(ctx, 0);
+    Onnx__TensorProto *i_input = searchInputByIndex(ctx, 0);
 
     TRACE_TENSOR(2, true, i_input);
 
@@ -53,7 +53,7 @@ execute_operator__ai_onnx__softmax__11__T_tensor_float(
     TRACE_VAR(2, true, N, "%" PRId64);
     TRACE_VAR(2, true, D, "%" PRId64);
 
-    Onnx__TensorProto *o_output = searchOutputByName(ctx, 0);
+    Onnx__TensorProto *o_output = searchOutputByIndex(ctx, 0);
 
     TRACE_TENSOR(2, true, o_output);
 

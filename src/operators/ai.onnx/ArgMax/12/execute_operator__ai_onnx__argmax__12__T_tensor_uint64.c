@@ -5,7 +5,7 @@
 
 operator_status
 execute_operator__ai_onnx__argmax__12__T_tensor_uint64(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -14,7 +14,7 @@ execute_operator__ai_onnx__argmax__12__T_tensor_uint64(
 
     /* UNCOMMENT AS NEEDED */
 
-    // Onnx__TensorProto *i_data = searchInputByName(ctx, 0);
+    // Onnx__TensorProto *i_data = searchInputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, i_data);
 
@@ -28,7 +28,7 @@ execute_operator__ai_onnx__argmax__12__T_tensor_uint64(
     // TRACE_VAR(2, true, keepdims, "%" PRId64);
     // TRACE_VAR(2, true, select_last_index, "%" PRId64);
 
-    // Onnx__TensorProto *o_reduced = searchOutputByName(ctx, 0);
+    // Onnx__TensorProto *o_reduced = searchOutputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, o_reduced);
 

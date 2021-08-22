@@ -23,7 +23,7 @@ sigmoid(float *in, float *out, int num) {
 
 operator_status
 execute_operator__ai_onnx__sigmoid__6__T_tensor_float(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -32,13 +32,13 @@ execute_operator__ai_onnx__sigmoid__6__T_tensor_float(
 
     /* UNCOMMENT AS NEEDED */
 
-    Onnx__TensorProto *i_X = searchInputByName(ctx, 0);
+    Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
 
     TRACE_TENSOR(2, true, i_X);
 
     // context_operator__ai_onnx__sigmoid__6 *op_ctx = ctx->executer_context;
 
-    Onnx__TensorProto *o_Y = searchOutputByName(ctx, 0);
+    Onnx__TensorProto *o_Y = searchOutputByIndex(ctx, 0);
 
     TRACE_TENSOR(2, true, o_Y);
 

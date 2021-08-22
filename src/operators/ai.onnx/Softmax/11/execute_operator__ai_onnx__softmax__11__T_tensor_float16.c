@@ -5,7 +5,7 @@
 
 operator_status
 execute_operator__ai_onnx__softmax__11__T_tensor_float16(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -14,7 +14,7 @@ execute_operator__ai_onnx__softmax__11__T_tensor_float16(
 
     /* UNCOMMENT AS NEEDED */
 
-    // Onnx__TensorProto *i_input = searchInputByName(ctx, 0);
+    // Onnx__TensorProto *i_input = searchInputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, i_input);
 
@@ -24,7 +24,7 @@ execute_operator__ai_onnx__softmax__11__T_tensor_float16(
 
     // TRACE_VAR(2, true, axis, "%" PRId64);
 
-    // Onnx__TensorProto *o_output = searchOutputByName(ctx, 0);
+    // Onnx__TensorProto *o_output = searchOutputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, o_output);
 

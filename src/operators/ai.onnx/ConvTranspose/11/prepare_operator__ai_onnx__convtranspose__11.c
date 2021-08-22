@@ -17,7 +17,7 @@ int64_t* createArray(size_t n, int64_t value) {
 
 operator_status
 prepare_operator__ai_onnx__convtranspose__11(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -26,9 +26,9 @@ prepare_operator__ai_onnx__convtranspose__11(
 
     /* UNCOMMENT AS NEEDED */
 
-    Onnx__TensorProto *i_X = searchInputByName(ctx, 0);
-    Onnx__TensorProto *i_W = searchInputByName(ctx, 1);
-    Onnx__TensorProto *i_B = searchInputByName(ctx, 2);
+    Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
+    Onnx__TensorProto *i_W = searchInputByIndex(ctx, 1);
+    Onnx__TensorProto *i_B = searchInputByIndex(ctx, 2);
 
     TRACE_TENSOR(2, true, i_X);
     TRACE_TENSOR(2, true, i_W);
@@ -54,7 +54,7 @@ prepare_operator__ai_onnx__convtranspose__11(
     TRACE_ATTRIBUTE(2, a_pads, a_pads);
     TRACE_ATTRIBUTE(2, a_strides, a_strides);
 
-    Onnx__TensorProto *o_Y = searchOutputByName(ctx, 0);
+    Onnx__TensorProto *o_Y = searchOutputByIndex(ctx, 0);
 
     /* ALLOCATE AND INITIALIZE CONTEXT HERE IF NEEDED */
 

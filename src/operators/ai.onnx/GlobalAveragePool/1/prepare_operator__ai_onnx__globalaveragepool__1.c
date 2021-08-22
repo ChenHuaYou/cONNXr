@@ -5,7 +5,7 @@
 
 operator_status
 prepare_operator__ai_onnx__globalaveragepool__1(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -14,11 +14,11 @@ prepare_operator__ai_onnx__globalaveragepool__1(
 
     /* UNCOMMENT AS NEEDED */
 
-    Onnx__TensorProto *i_X = searchInputByName(ctx, 0);
+    Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
 
     TRACE_TENSOR(2, true, i_X);
 
-    Onnx__TensorProto *o_Y = searchOutputByName(ctx, 0);
+    Onnx__TensorProto *o_Y = searchOutputByIndex(ctx, 0);
 
     /* ALLOCATE AND INITIALIZE CONTEXT HERE IF NEEDED */
 

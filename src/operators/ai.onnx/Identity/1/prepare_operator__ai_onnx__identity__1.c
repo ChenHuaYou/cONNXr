@@ -6,7 +6,7 @@
 
 operator_status
 prepare_operator__ai_onnx__identity__1(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {
     TRACE_ENTRY(1);
@@ -15,11 +15,11 @@ prepare_operator__ai_onnx__identity__1(
 
     /* UNCOMMENT AS NEEDED */
 
-    Onnx__TensorProto *i_input = searchInputByName(ctx, 0);
+    Onnx__TensorProto *i_input = searchInputByIndex(ctx, 0);
 
     TRACE_TENSOR(2, true, i_input);
 
-    Onnx__TensorProto *o_output = searchOutputByName(ctx, 0);
+    Onnx__TensorProto *o_output = searchOutputByIndex(ctx, 0);
 
     /* ALLOCATE AND INITIALIZE CONTEXT HERE IF NEEDED */
 
