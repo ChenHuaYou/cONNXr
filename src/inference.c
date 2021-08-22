@@ -24,28 +24,28 @@ void resolveModel(Onnx__ModelProto *model)
         model->graph->node[nodeIdx]->inputs = malloc(sizeof(Onnx__TensorProto *) * model->graph->node[nodeIdx]->n_input);
         for (int i = 0; i < model->graph->node[nodeIdx]->n_input; i++)
         {
-            model->graph->node[nodeIdx]->input_tensor[i] = searchTensorProtoByName(model, model->graph->node[nodeIdx]->input[i]);
-            if (model->graph->node[nodeIdx]->input_tensor[i] && model->graph->node[nodeIdx]->input_tensor[i]->has_raw_data){
+            model->graph->node[nodeIdx]->inputs[i] = searchTensorProtoByName(model, model->graph->node[nodeIdx]->input[i]);
+            if (model->graph->node[nodeIdx]->inputs[i] && model->graph->node[nodeIdx]->inputs[i]->has_raw_data){
                 /* If the tensor has raw data, deserialize it */
                 TRACE(1, true, "input %s has raw data", model->graph->node[nodeIdx]->input[i]);
                 // TODO: Not tested. Crashing but currently not needed
-                convertRawDataOfTensorProto(model->graph->node[nodeIdx]->input_tensor[i]);
+                convertRawDataOfTensorProto(model->graph->node[nodeIdx]->inputs[i]);
             }
         }
 
         // Allocate memory for future outputs and set the name
-        model->graph->node[nodeIdx]->output_tensor = malloc(sizeof(Onnx__TensorProto *) * model->graph->node[nodeIdx]->n_output);
+        model->graph->node[nodeIdx]->outputs = malloc(sizeof(Onnx__TensorProto *) * model->graph->node[nodeIdx]->n_output);
         for (int i = 0; i < model->graph->node[nodeIdx]->n_output; i++)
         {
-            model->graph->node[nodeIdx]->output_tensor[i] = malloc(sizeof(Onnx__TensorProto));
-            init_tensor_proto(model->graph->node[nodeIdx]->output_tensor[i]);
-            model->graph->node[nodeIdx]->output_tensor[i]->name = strdup(model->graph->node[nodeIdx]->output[i]);
+            model->graph->node[nodeIdx]->outputs[i] = malloc(sizeof(Onnx__TensorProto));
+            init_tensor_proto(model->graph->node[nodeIdx]->outputs[i]);
+            model->graph->node[nodeIdx]->outputs[i]->name = strdup(model->graph->node[nodeIdx]->output[i]);
 
             // TODO This is unset at this point but set afterward inside each
             // function. However there is a problem because some node output
             // is some node else input. Hence if the type is unset it can't
             // be resolved. Hardcoded to FLOAT but this is a HUGE TODO
-            model->graph->node[nodeIdx]->output_tensor[i]->data_type = 1;
+            model->graph->node[nodeIdx]->outputs[i]->data_type = 1;
         }
 
         /*** Prototyping ***/
@@ -70,19 +70,12 @@ Onnx__TensorProto** inference(Onnx__ModelProto *model, Onnx__TensorProto **input
     for (int nodeIdx = 0; nodeIdx < model->graph->n_node; nodeIdx++)
     {
         TRACE(1, true, "Running node %d, operator=%s", nodeIdx, model->graph->node[nodeIdx]->op_type);
-        model->graph->node[nodeIdx].executer(&all_context[nodeIdx]);
+        model->graph->node[nodeIdx]->executer(model->graph->node[nodeIdx]);
     }
 
     // TODO
     TRACE_EXIT(1);
     //freeContext(all_context, model);
-    return all_context[model->graph->n_node-1].outputs;
+    return model->graph->node[model->graph->n_node-1]->outputs;
 }
 
-void freeContext(node_context *nodePtr, Onnx__ModelProto *model){
-    for(int i=0; i<model->graph->n_node; i++){
-        for(int j=0; j<model->graph->node[i]->n_input; j++){
-            free(nodePtr[i].inputs[j]);
-        }
-    }
-}
