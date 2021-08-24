@@ -104,12 +104,12 @@
  * Attribute INTS strides (optional):
  *   Stride along each spatial axis. If not present, the stride defaults to 1
  *   along each spatial axis.
- *
- * @since version 11
- *
- * @see tmp/pip-req-build-t1yqduuy/onnx/defs/nn/defs.cc:1446
+*
+* @since version 11
+*
+ * @see io/onnx/onnx/defs/nn/defs.cc:1364
  * @see https://github.com/onnx/onnx/blob/master/docs/Operators.md#ConvTranspose
- */
+*/
 
 operator_status
 prepare_operator__ai_onnx__convtranspose__11(
@@ -136,28 +136,8 @@ typedef struct {
 
 } context_operator__ai_onnx__convtranspose__11;
 
-operator_executer
-resolve_operator__ai_onnx__convtranspose__11(
-    Onnx__NodeProto *ctx
-);
-
 operator_status
 execute_operator__ai_onnx__convtranspose__11(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__convtranspose__11__T_tensor_double(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__convtranspose__11__T_tensor_float(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__convtranspose__11__T_tensor_float16(
     Onnx__NodeProto *ctx
 );
 

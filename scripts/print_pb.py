@@ -22,7 +22,7 @@ def print_pb_file(filename):
     print("Name:", tensor.name)
     print("Data Type:", tensor.data_type)
     print("Shape:", np_array.shape)
-    print(np_array)
+    #print(np_array)
 
 
 def numpy_to_pb(name, np_data, out_filename):
@@ -31,16 +31,15 @@ def numpy_to_pb(name, np_data, out_filename):
 
 
 if __name__ == '__main__':
-    numpy.set_printoptions(threshold=sys.maxsize)
+    #numpy.set_printoptions(threshold=sys.maxsize)
     #print_pb_file(
     #    "test/super_resolution/test_data_set_0/input_0.pb")
     #print_pb_file(
     #    "test/super_resolution/test_data_set_0/output_0.pb")
 
-    tensor   = onnx.load_tensor("../test/super_resolution/test_data_set_0/output_0.pb")
-    tensor.dims[:] = [1, 1, 672, 672]
-    onnx.save_tensor(tensor, "../test/super_resolution/test_data_set_0/output_0_fixed.pb")
+    #tensor   = onnx.load_tensor("../test/super_resolution/test_data_set_0/output_0.pb")
+    #tensor.dims[:] = [1, 1, 672, 672]
+    #onnx.save_tensor(tensor, "../test/super_resolution/test_data_set_0/output_0_fixed.pb")
 
 
-    print_pb_file(
-        "../test/node/test_maxpool_2d_same_upper/test_data_set_0/output_0.pb")
+    print_pb_file("test/mnist/test_data_set_2/input_0.pb")

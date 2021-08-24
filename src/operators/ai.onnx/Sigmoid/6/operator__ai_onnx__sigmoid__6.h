@@ -26,12 +26,12 @@
  *   Output tensor
  *   Allowed Types: tensor_double, tensor_float, tensor_float16
 
- *
- * @since version 6
- *
+*
+* @since version 6
+*
  * @see io/onnx/onnx/defs/math/defs.cc:640
  * @see https://github.com/onnx/onnx/blob/master/docs/Operators.md#Sigmoid
- */
+*/
 
 operator_status
 prepare_operator__ai_onnx__sigmoid__6(
@@ -44,28 +44,8 @@ typedef struct {
 // no attributes
 } context_operator__ai_onnx__sigmoid__6;
 
-operator_executer
-resolve_operator__ai_onnx__sigmoid__6(
-    Onnx__NodeProto *ctx
-);
-
 operator_status
 execute_operator__ai_onnx__sigmoid__6(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__sigmoid__6__T_tensor_double(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__sigmoid__6__T_tensor_float(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__sigmoid__6__T_tensor_float16(
     Onnx__NodeProto *ctx
 );
 

@@ -1,7 +1,7 @@
 
 VARIABLE+=TRACE_LEVEL
 HELP_TRACE_LEVEL=trace verbosity
-# TRACE_LEVEL?=0
+#TRACE_LEVEL=0
 
 VARIABLE+=BUILDDIR
 HELP_BUILDDIR=build directory
@@ -198,5 +198,8 @@ generate_custom_tests:
 
 example:
 	$(MAKE) -C ./examples/example1
+
+test_op:
+	$(MAKE) -C ./examples
 
 include .Makefile.template

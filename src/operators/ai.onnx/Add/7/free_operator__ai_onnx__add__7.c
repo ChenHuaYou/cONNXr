@@ -14,8 +14,8 @@ free_operator__ai_onnx__add__7(
 
     /* UNCOMMENT AS NEEDED */
 
-    // Onnx__TensorProto *i_A = searchInputByIndex(ctx, 0);
-    // Onnx__TensorProto *i_B = searchInputByIndex(ctx, 1);
+    //Onnx__TensorProto *i_A = searchInputByIndex(ctx, 0);
+    //Onnx__TensorProto *i_B = searchInputByIndex(ctx, 1);
 
     // TRACE_TENSOR(2, true, i_A);
     // TRACE_TENSOR(2, true, i_B);
@@ -24,7 +24,7 @@ free_operator__ai_onnx__add__7(
 
     
 
-    // Onnx__TensorProto *o_C = searchOutputByIndex(ctx, 0);
+    //Onnx__TensorProto *o_C = searchOutputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, o_C);
 

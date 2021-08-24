@@ -33,10 +33,8 @@ int main()
   inp0set0->name = "Input3";
   printf("%s\n\n", inp0set0->name);
 
-  Onnx__TensorProto *inputs[] = { inp0set0 };
-  resolve(model, inputs, 1);
-  Onnx__TensorProto **output = inference(model, inputs, 1);
-
+  Onnx__TensorProto *inputs[] = { inp0set0, NULL};
+  Onnx__TensorProto **output = inference(model, inputs);
   /* 11 is hardcoded, which is Plus214_Output_0 */
   compareAlmostEqualTensorProto(*output, out0set0);
   free(inp0set0);

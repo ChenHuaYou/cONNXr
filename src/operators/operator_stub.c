@@ -16,12 +16,12 @@ operator_info operator_stub_info = {
     .constraint   = NULL,
 };
 
-operator_executer operator_stub_resolver(node_context *ctx)
+operator_executer operator_stub_resolver(Onnx__NodeProto *ctx)
 {
     return &operator_stub;
 }
 
-operator_status operator_stub(node_context *ctx)
+operator_status operator_stub(Onnx__NodeProto *ctx)
 {
     fprintf(stderr, "operator not implemented!\n");
     return OP_ENOSYS;

@@ -2,7 +2,6 @@
 #include "operator__ai_onnx__constant__12.h"
 #include "tracing.h"
 #include "utils.h"
-#include <string.h>
 
 operator_status
 prepare_operator__ai_onnx__constant__12(
@@ -15,8 +14,12 @@ prepare_operator__ai_onnx__constant__12(
 
     /* UNCOMMENT AS NEEDED */
 
+    
+
+    
+
     // Onnx__AttributeProto *a_sparse_value = searchAttributeNyName(ctx->onnx_node->n_attribute,ctx->onnx_node->attribute,"sparse_value");
-    Onnx__AttributeProto *a_value = searchAttributeNyName(ctx->onnx_node->n_attribute,ctx->onnx_node->attribute,"value");
+    // Onnx__AttributeProto *a_value = searchAttributeNyName(ctx->onnx_node->n_attribute,ctx->onnx_node->attribute,"value");
     // Onnx__AttributeProto *a_value_float = searchAttributeNyName(ctx->onnx_node->n_attribute,ctx->onnx_node->attribute,"value_float");
     // Onnx__AttributeProto *a_value_floats = searchAttributeNyName(ctx->onnx_node->n_attribute,ctx->onnx_node->attribute,"value_floats");
     // Onnx__AttributeProto *a_value_int = searchAttributeNyName(ctx->onnx_node->n_attribute,ctx->onnx_node->attribute,"value_int");
@@ -25,7 +28,7 @@ prepare_operator__ai_onnx__constant__12(
     // Onnx__AttributeProto *a_value_strings = searchAttributeNyName(ctx->onnx_node->n_attribute,ctx->onnx_node->attribute,"value_strings");
 
     // TRACE_ATTRIBUTE(2, a_sparse_value, a_sparse_value);
-    TRACE_ATTRIBUTE(2, a_value, a_value);
+    // TRACE_ATTRIBUTE(2, a_value, a_value);
     // TRACE_ATTRIBUTE(2, a_value_float, a_value_float);
     // TRACE_ATTRIBUTE(2, a_value_floats, a_value_floats);
     // TRACE_ATTRIBUTE(2, a_value_int, a_value_int);
@@ -85,34 +88,22 @@ prepare_operator__ai_onnx__constant__12(
 
     /* INITIALIZE OUTPUTS DATA_TYPE AND SHAPE HERE */
 
-    /* Attention. Don't do this. Leaving it here so I don't waste again
-    hours debugging this. Don't modify the memory address that the
-    output is pointing. Otherwise the next operator in the node won't
-    be able to find it. Copy it instead*/
-    //ctx->outputs[0] = value->t;
-
-    TRACE_FATAL(0, !a_value, "value not specified!");
-
-    char *saved_name = o_output->name;
-    memcpy(o_output, a_value->t, sizeof(Onnx__TensorProto));
-    o_output->name = saved_name;
-    convertRawDataOfTensorProto(o_output);
 
     /* MALLOC OUTPUT TENSORS HERE */
 
-    // mallocTensorData(o_output);
+    mallocTensorData(o_output);
 
-    TRACE_TENSOR(2, true, o_output);
+    // TRACE_TENSOR(2, true, o_output);
 
     /* CHOOSE EXECUTER AND CONTEXT HERE */
     /* YOU MAY USE THE GENERATED RESOLVER */
 
-    ctx->executer = &execute_operator__ai_onnx__constant__12;
+    ctx->executer = execute_operator__ai_onnx__constant__12;
     // ctx->executer_context = op_ctx;
 
     TRACE_EXIT(1);
 
     /* CHANGE RETURN CODE IF THIS PREPARER IS VALID */
-    // return OP_ENOSYS;
-    return OP_OK;
+    return OP_ENOSYS;
+    // return OP_OK;
 }

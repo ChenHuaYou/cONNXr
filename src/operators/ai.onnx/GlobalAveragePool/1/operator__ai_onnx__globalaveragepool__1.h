@@ -15,7 +15,7 @@
  * GlobalAveragePool consumes an input tensor X and applies average pooling across
  *  the values in the same channel. This is equivalent to AveragePool with kernel size
  *  equal to the spatial dimension of input tensor.
- *
+ * 
  * Constraint T:
  *   Constrain input and output types to float tensors.
  *   Allowed Types: tensor_double, tensor_float, tensor_float16
@@ -33,12 +33,12 @@
  *   all 1.
  *   Allowed Types: tensor_double, tensor_float, tensor_float16
 
- *
- * @since version 1
- *
+*
+* @since version 1
+*
  * @see io/onnx/onnx/defs/nn/defs.cc:1437
  * @see https://github.com/onnx/onnx/blob/master/docs/Operators.md#GlobalAveragePool
- */
+*/
 
 operator_status
 prepare_operator__ai_onnx__globalaveragepool__1(
@@ -51,23 +51,8 @@ typedef struct {
 // no attributes
 } context_operator__ai_onnx__globalaveragepool__1;
 
-operator_executer
-resolve_operator__ai_onnx__globalaveragepool__1(
-    Onnx__NodeProto *ctx
-);
-
 operator_status
-execute_operator__ai_onnx__globalaveragepool__1__T_tensor_double(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__globalaveragepool__1__T_tensor_float(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__globalaveragepool__1__T_tensor_float16(
+execute_operator__ai_onnx__globalaveragepool__1(
     Onnx__NodeProto *ctx
 );
 

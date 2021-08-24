@@ -18,7 +18,7 @@ args.verbose = 1
 #args.include = [".*"]
 #args.exclude = []
 #args.version = ["all"]
-#args.domains  = ["all"]
+args.domains  = ["ai.onnx"]
 args.path = ["/home/mc/erp/data/cONNXr/"]
 
 from onnx_generator import run

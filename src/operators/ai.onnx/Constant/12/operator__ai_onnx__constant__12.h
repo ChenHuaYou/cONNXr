@@ -52,12 +52,12 @@
  * 
  * Attribute STRINGS value_strings (optional):
  *   The values for the elements for the 1D, UTF-8 string, output tensor.
- *
- * @since version 12
- *
+*
+* @since version 12
+*
  * @see io/onnx/onnx/defs/generator/defs.cc:171
  * @see https://github.com/onnx/onnx/blob/master/docs/Operators.md#Constant
- */
+*/
 
 operator_status
 prepare_operator__ai_onnx__constant__12(
@@ -80,11 +80,6 @@ typedef struct {
     char** value_strings;
 
 } context_operator__ai_onnx__constant__12;
-
-operator_executer
-resolve_operator__ai_onnx__constant__12(
-    Onnx__NodeProto *ctx
-);
 
 operator_status
 execute_operator__ai_onnx__constant__12(

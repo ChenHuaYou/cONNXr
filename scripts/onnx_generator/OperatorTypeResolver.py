@@ -97,6 +97,7 @@ class Resolve(Template):
                     if output.optional:
                         continue
                     break
+            inOrOutput = "outputs"
             resolveTypes.append(Type(constraint.name,inOrOutput,name))
         permutationsMap = schema.constraints.typePermutationsMap(filterInput=True)
         self.types = "\n".join([ str(t) for t in resolveTypes ])
@@ -120,7 +121,7 @@ class Source(Template):
 
 operator_executer
 resolve_{schema.operator_name}(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 ){{
     operator_executer executer = NULL;
     {switch}

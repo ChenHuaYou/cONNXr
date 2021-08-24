@@ -18,7 +18,7 @@
  * inferred from the size of the tensor and the remaining dimensions. A dimension
  * could also be 0, in which case the actual dimension value is unchanged (i.e. taken
  * from the input tensor).
- *
+ * 
  * Constraint T:
  *   Constrain input and output types to all tensor types.
  *   Allowed Types: tensor_bool, tensor_complex128, tensor_complex64,
@@ -31,7 +31,7 @@
  *                  tensor_double, tensor_float, tensor_float16, tensor_int16,
  *                  tensor_int32, tensor_int64, tensor_int8, tensor_string,
  *                  tensor_uint16, tensor_uint32, tensor_uint64, tensor_uint8
- *
+ * 
  * Input tensor(int64) shape:
  *   Specified shape for output.
  *   Allowed Types: tensor_int64
@@ -42,12 +42,12 @@
  *                  tensor_int32, tensor_int64, tensor_int8, tensor_string,
  *                  tensor_uint16, tensor_uint32, tensor_uint64, tensor_uint8
 
- *
- * @since version 5
- *
+*
+* @since version 5
+*
  * @see io/onnx/onnx/defs/tensor/defs.cc:227
  * @see https://github.com/onnx/onnx/blob/master/docs/Operators.md#Reshape
- */
+*/
 
 operator_status
 prepare_operator__ai_onnx__reshape__5(
@@ -60,83 +60,8 @@ typedef struct {
 // no attributes
 } context_operator__ai_onnx__reshape__5;
 
-operator_executer
-resolve_operator__ai_onnx__reshape__5(
-    Onnx__NodeProto *ctx
-);
-
 operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_bool(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_complex128(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_complex64(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_double(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_float(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_float16(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_int16(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_int32(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_int64(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_int8(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_string(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_uint16(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_uint32(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_uint64(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__reshape__5__T_tensor_uint8(
+execute_operator__ai_onnx__reshape__5(
     Onnx__NodeProto *ctx
 );
 

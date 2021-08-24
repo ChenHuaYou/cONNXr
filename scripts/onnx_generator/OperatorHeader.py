@@ -57,7 +57,7 @@ class Prototype(Template):
 {attribute}
 {return_type}
 {prefix}{name}{suffix}(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 );
 '''
     def __init__(self, name, prefix="",suffix="", return_type="operator_status", attribute=""):
@@ -72,16 +72,17 @@ class PrototypeExecuters(Template):
     def __init__(self, schema):
         self.schema = schema
         self.executers  = str(Prototype(self.schema.operator_name,prefix="execute_")) + "\n\n"
-        self.executers += "\n\n".join([str(Prototype(
-                            self.schema.operator_name,
-                            prefix="execute_",
-                            suffix=f"__{t}"
-                          ))
-                          for t in self.schema.constraints.typePermutations(filterInput=True) ])
+        #self.executers += "\n\n".join([str(Prototype(
+        #                    self.schema.operator_name,
+        #                    prefix="execute_",
+        #                    suffix=f""
+        #                  ))
+        #                  ])
+        #                  #for t in self.schema.constraints.typePermutations(filterInput=True) ])
 
 class PrototypeExecuter(Prototype):
     def __init__(self, name, type):
-        super().__init__(name, prefix="executer_", suffix=f"__{type}", attribute='')
+        super().__init__(name, prefix="executer_", suffix=f"", attribute='')
 
 class PrototypeResolver(Prototype):
     def __init__(self, name):
@@ -176,8 +177,6 @@ class Header(Template):
 
 {context}
 
-{resolver}
-
 {executers}
 
 # endif
@@ -190,6 +189,6 @@ class Header(Template):
         self.doxygen = Doxygen(schema, path)
         self.preparer = Prototype(schema.operator_name,prefix="prepare_")
         self.context = ExecuterContext(schema)
-        self.resolver = PrototypeResolver(schema.operator_name)
+        #self.resolver = PrototypeResolver(schema.operator_name)
         self.info = Info(schema)
         self.executers = PrototypeExecuters(schema)

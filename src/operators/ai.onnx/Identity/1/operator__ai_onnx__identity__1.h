@@ -13,7 +13,7 @@
  * @return          Status code
  *
  * Identity operator
- *
+ * 
  * Constraint T:
  *   Constrain input and output types to all tensor types.
  *   Allowed Types: tensor_bool, tensor_complex128, tensor_complex64,
@@ -33,12 +33,12 @@
  *                  tensor_int32, tensor_int64, tensor_int8, tensor_string,
  *                  tensor_uint16, tensor_uint32, tensor_uint64, tensor_uint8
 
- *
- * @since version 1
- *
+*
+* @since version 1
+*
  * @see io/onnx/onnx/defs/tensor/defs.cc:1825
  * @see https://github.com/onnx/onnx/blob/master/docs/Operators.md#Identity
- */
+*/
 
 operator_status
 prepare_operator__ai_onnx__identity__1(
@@ -50,11 +50,6 @@ extern operator_info info_operator__ai_onnx__identity__1;
 typedef struct {
 // no attributes
 } context_operator__ai_onnx__identity__1;
-
-operator_executer
-resolve_operator__ai_onnx__identity__1(
-    Onnx__NodeProto *ctx
-);
 
 operator_status
 execute_operator__ai_onnx__identity__1(

@@ -54,12 +54,12 @@ operator__ai_onnx__conv__11__T_tensor_float(
 
   TRACE_FATAL(0, t_B && t_B->n_dims != 1 && t_B->dims[0] != M, "Mismatch of supplied bias size (%" PRId64 ") and number of feature maps (%" PRId64 ")", t_B->n_float_data, M);
 
-  Onnx__AttributeProto *a_auto_pad     = searchAttributeNyName(ctx->onnx_node->n_attribute, ctx->onnx_node->attribute, "auto_pad");
-  Onnx__AttributeProto *a_dilations    = searchAttributeNyName(ctx->onnx_node->n_attribute, ctx->onnx_node->attribute, "dilations");
-  Onnx__AttributeProto *a_group        = searchAttributeNyName(ctx->onnx_node->n_attribute, ctx->onnx_node->attribute, "group");
-  Onnx__AttributeProto *a_kernel_shape = searchAttributeNyName(ctx->onnx_node->n_attribute, ctx->onnx_node->attribute, "kernel_shape");
-  Onnx__AttributeProto *a_pads         = searchAttributeNyName(ctx->onnx_node->n_attribute, ctx->onnx_node->attribute, "pads");
-  Onnx__AttributeProto *a_strides      = searchAttributeNyName(ctx->onnx_node->n_attribute, ctx->onnx_node->attribute, "strides");
+  Onnx__AttributeProto *a_auto_pad     = searchAttributeNyName(ctx->n_attribute, ctx->attribute, "auto_pad");
+  Onnx__AttributeProto *a_dilations    = searchAttributeNyName(ctx->n_attribute, ctx->attribute, "dilations");
+  Onnx__AttributeProto *a_group        = searchAttributeNyName(ctx->n_attribute, ctx->attribute, "group");
+  Onnx__AttributeProto *a_kernel_shape = searchAttributeNyName(ctx->n_attribute, ctx->attribute, "kernel_shape");
+  Onnx__AttributeProto *a_pads         = searchAttributeNyName(ctx->n_attribute, ctx->attribute, "pads");
+  Onnx__AttributeProto *a_strides      = searchAttributeNyName(ctx->n_attribute, ctx->attribute, "strides");
 
   TRACE_ATTRIBUTE(2, a_auto_pad, a_auto_pad);
   TRACE_ATTRIBUTE(2, a_dilations, a_dilations);

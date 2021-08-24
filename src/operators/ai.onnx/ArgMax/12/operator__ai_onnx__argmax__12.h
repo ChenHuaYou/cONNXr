@@ -12,14 +12,14 @@
  * @param[in]  ctx  Operator context
  * @return          Status code
  *
- * Computes the indices of the max elements of the input tensor's element along the
- * provided axis. The resulting tensor has the same rank as the input if keepdims equal 1.
- * If keepdims equal 0, then the resulting tensor have the reduced dimension pruned.
- * If select_last_index is True (default False), the index of the last occurrence of the max
- * is selected if the max appears more than once in the input. Otherwise the index of the
+ * Computes the indices of the max elements of the input tensor's element along the 
+ * provided axis. The resulting tensor has the same rank as the input if keepdims equal 1. 
+ * If keepdims equal 0, then the resulting tensor have the reduced dimension pruned. 
+ * If select_last_index is True (default False), the index of the last occurrence of the max 
+ * is selected if the max appears more than once in the input. Otherwise the index of the 
  * first occurrence is selected.
  * The type of the output tensor is integer.
- *
+ * 
  * Constraint T:
  *   Constrain input and output types to all numeric tensors.
  *   Allowed Types: tensor_double, tensor_float, tensor_float16, tensor_int16,
@@ -36,19 +36,19 @@
  * Attribute INT axis (optional):
  *   The axis in which to compute the arg indices. Accepted range is [-r, r-1]
  *   where r = rank(data).
- *
+ * 
  * Attribute INT keepdims (optional):
  *   Keep the reduced dimension or not, default 1 mean keep reduced dimension.
- *
+ * 
  * Attribute INT select_last_index (optional):
  *   Whether to select the last index or the first index if the {name} appears
  *   in multiple indices, default is False (first index).
- *
- * @since version 12
- *
+*
+* @since version 12
+*
  * @see io/onnx/onnx/defs/reduction/defs.cc:238
  * @see https://github.com/onnx/onnx/blob/master/docs/Operators.md#ArgMax
- */
+*/
 
 operator_status
 prepare_operator__ai_onnx__argmax__12(
@@ -64,63 +64,8 @@ typedef struct {
 
 } context_operator__ai_onnx__argmax__12;
 
-operator_executer
-resolve_operator__ai_onnx__argmax__12(
-    Onnx__NodeProto *ctx
-);
-
 operator_status
-execute_operator__ai_onnx__argmax__12__T_tensor_double(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__argmax__12__T_tensor_float(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__argmax__12__T_tensor_float16(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__argmax__12__T_tensor_int16(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__argmax__12__T_tensor_int32(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__argmax__12__T_tensor_int64(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__argmax__12__T_tensor_int8(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__argmax__12__T_tensor_uint16(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__argmax__12__T_tensor_uint32(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__argmax__12__T_tensor_uint64(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__argmax__12__T_tensor_uint8(
+execute_operator__ai_onnx__argmax__12(
     Onnx__NodeProto *ctx
 );
 

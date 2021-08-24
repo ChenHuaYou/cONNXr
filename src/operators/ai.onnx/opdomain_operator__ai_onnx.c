@@ -2,48 +2,334 @@
 
 #include "operators/operator_set.h"
 
+extern operator_set_opname opname_operator__ai_onnx__greaterorequal;
+extern operator_set_opname opname_operator__ai_onnx__celu;
+extern operator_set_opname opname_operator__ai_onnx__concatfromsequence;
+extern operator_set_opname opname_operator__ai_onnx__softmaxcrossentropyloss;
+extern operator_set_opname opname_operator__ai_onnx__splittosequence;
+extern operator_set_opname opname_operator__ai_onnx__sequenceerase;
+extern operator_set_opname opname_operator__ai_onnx__sequenceat;
+extern operator_set_opname opname_operator__ai_onnx__sequenceinsert;
+extern operator_set_opname opname_operator__ai_onnx__sequenceconstruct;
+extern operator_set_opname opname_operator__ai_onnx__sequenceempty;
+extern operator_set_opname opname_operator__ai_onnx__det;
+extern operator_set_opname opname_operator__ai_onnx__cumsum;
+extern operator_set_opname opname_operator__ai_onnx__roialign;
+extern operator_set_opname opname_operator__ai_onnx__nonmaxsuppression;
+extern operator_set_opname opname_operator__ai_onnx__isinf;
+extern operator_set_opname opname_operator__ai_onnx__qlinearconv;
+extern operator_set_opname opname_operator__ai_onnx__convinteger;
+extern operator_set_opname opname_operator__ai_onnx__round;
+extern operator_set_opname opname_operator__ai_onnx__qlinearmatmul;
+extern operator_set_opname opname_operator__ai_onnx__range;
+extern operator_set_opname opname_operator__ai_onnx__thresholdedrelu;
+extern operator_set_opname opname_operator__ai_onnx__stringnormalizer;
+extern operator_set_opname opname_operator__ai_onnx__meanvariancenormalization;
+extern operator_set_opname opname_operator__ai_onnx__nonzero;
+extern operator_set_opname opname_operator__ai_onnx__where;
+extern operator_set_opname opname_operator__ai_onnx__shrink;
+extern operator_set_opname opname_operator__ai_onnx__erf;
+extern operator_set_opname opname_operator__ai_onnx__atanh;
+extern operator_set_opname opname_operator__ai_onnx__acosh;
+extern operator_set_opname opname_operator__ai_onnx__onehot;
+extern operator_set_opname opname_operator__ai_onnx__tfidfvectorizer;
+extern operator_set_opname opname_operator__ai_onnx__maxunpool;
+extern operator_set_opname opname_operator__ai_onnx__eyelike;
+extern operator_set_opname opname_operator__ai_onnx__constantofshape;
+extern operator_set_opname opname_operator__ai_onnx__expand;
+extern operator_set_opname opname_operator__ai_onnx__multinomial;
+extern operator_set_opname opname_operator__ai_onnx__atan;
+extern operator_set_opname opname_operator__ai_onnx__asin;
+extern operator_set_opname opname_operator__ai_onnx__lpnormalization;
+extern operator_set_opname opname_operator__ai_onnx__ceil;
+extern operator_set_opname opname_operator__ai_onnx__randomuniformlike;
+extern operator_set_opname opname_operator__ai_onnx__lstm;
+extern operator_set_opname opname_operator__ai_onnx__logsoftmax;
 extern operator_set_opname opname_operator__ai_onnx__matmul;
+extern operator_set_opname opname_operator__ai_onnx__bitshift;
+extern operator_set_opname opname_operator__ai_onnx__sinh;
+extern operator_set_opname opname_operator__ai_onnx__acos;
 extern operator_set_opname opname_operator__ai_onnx__identity;
+extern operator_set_opname opname_operator__ai_onnx__pow;
+extern operator_set_opname opname_operator__ai_onnx__mod;
+extern operator_set_opname opname_operator__ai_onnx__shape;
+extern operator_set_opname opname_operator__ai_onnx__if;
+extern operator_set_opname opname_operator__ai_onnx__softplus;
+extern operator_set_opname opname_operator__ai_onnx__hardmax;
+extern operator_set_opname opname_operator__ai_onnx__hardsigmoid;
+extern operator_set_opname opname_operator__ai_onnx__lppool;
+extern operator_set_opname opname_operator__ai_onnx__min;
+extern operator_set_opname opname_operator__ai_onnx__gatherelements;
+extern operator_set_opname opname_operator__ai_onnx__quantizelinear;
+extern operator_set_opname opname_operator__ai_onnx__sum;
 extern operator_set_opname opname_operator__ai_onnx__maxpool;
 extern operator_set_opname opname_operator__ai_onnx__transpose;
+extern operator_set_opname opname_operator__ai_onnx__resize;
+extern operator_set_opname opname_operator__ai_onnx__greater;
+extern operator_set_opname opname_operator__ai_onnx__scatternd;
+extern operator_set_opname opname_operator__ai_onnx__globallppool;
+extern operator_set_opname opname_operator__ai_onnx__gemm;
+extern operator_set_opname opname_operator__ai_onnx__instancenormalization;
+extern operator_set_opname opname_operator__ai_onnx__averagepool;
+extern operator_set_opname opname_operator__ai_onnx__matmulinteger;
+extern operator_set_opname opname_operator__ai_onnx__sign;
 extern operator_set_opname opname_operator__ai_onnx__clip;
+extern operator_set_opname opname_operator__ai_onnx__einsum;
+extern operator_set_opname opname_operator__ai_onnx__dequantizelinear;
+extern operator_set_opname opname_operator__ai_onnx__lrn;
+extern operator_set_opname opname_operator__ai_onnx__equal;
 extern operator_set_opname opname_operator__ai_onnx__elu;
+extern operator_set_opname opname_operator__ai_onnx__sin;
+extern operator_set_opname opname_operator__ai_onnx__pad;
+extern operator_set_opname opname_operator__ai_onnx__and;
+extern operator_set_opname opname_operator__ai_onnx__gathernd;
 extern operator_set_opname opname_operator__ai_onnx__relu;
 extern operator_set_opname opname_operator__ai_onnx__conv;
+extern operator_set_opname opname_operator__ai_onnx__size;
 extern operator_set_opname opname_operator__ai_onnx__argmax;
+extern operator_set_opname opname_operator__ai_onnx__isnan;
+extern operator_set_opname opname_operator__ai_onnx__div;
+extern operator_set_opname opname_operator__ai_onnx__maxroipool;
 extern operator_set_opname opname_operator__ai_onnx__add;
 extern operator_set_opname opname_operator__ai_onnx__leakyrelu;
+extern operator_set_opname opname_operator__ai_onnx__sequencelength;
+extern operator_set_opname opname_operator__ai_onnx__gru;
+extern operator_set_opname opname_operator__ai_onnx__reducelogsum;
+extern operator_set_opname opname_operator__ai_onnx__floor;
+extern operator_set_opname opname_operator__ai_onnx__argmin;
+extern operator_set_opname opname_operator__ai_onnx__depthtospace;
+extern operator_set_opname opname_operator__ai_onnx__tan;
+extern operator_set_opname opname_operator__ai_onnx__cast;
+extern operator_set_opname opname_operator__ai_onnx__reducesum;
+extern operator_set_opname opname_operator__ai_onnx__less;
+extern operator_set_opname opname_operator__ai_onnx__scan;
+extern operator_set_opname opname_operator__ai_onnx__concat;
+extern operator_set_opname opname_operator__ai_onnx__compress;
+extern operator_set_opname opname_operator__ai_onnx__convtranspose;
+extern operator_set_opname opname_operator__ai_onnx__topk;
+extern operator_set_opname opname_operator__ai_onnx__gather;
+extern operator_set_opname opname_operator__ai_onnx__reversesequence;
+extern operator_set_opname opname_operator__ai_onnx__xor;
+extern operator_set_opname opname_operator__ai_onnx__dropout;
+extern operator_set_opname opname_operator__ai_onnx__unique;
+extern operator_set_opname opname_operator__ai_onnx__max;
+extern operator_set_opname opname_operator__ai_onnx__globalmaxpool;
+extern operator_set_opname opname_operator__ai_onnx__exp;
+extern operator_set_opname opname_operator__ai_onnx__dynamicquantizelinear;
 extern operator_set_opname opname_operator__ai_onnx__reshape;
 extern operator_set_opname opname_operator__ai_onnx__globalaveragepool;
+extern operator_set_opname opname_operator__ai_onnx__or;
+extern operator_set_opname opname_operator__ai_onnx__randomnormallike;
+extern operator_set_opname opname_operator__ai_onnx__loop;
+extern operator_set_opname opname_operator__ai_onnx__split;
+extern operator_set_opname opname_operator__ai_onnx__mean;
 extern operator_set_opname opname_operator__ai_onnx__mul;
+extern operator_set_opname opname_operator__ai_onnx__neg;
+extern operator_set_opname opname_operator__ai_onnx__not;
+extern operator_set_opname opname_operator__ai_onnx__reducel1;
+extern operator_set_opname opname_operator__ai_onnx__flatten;
+extern operator_set_opname opname_operator__ai_onnx__prelu;
+extern operator_set_opname opname_operator__ai_onnx__unsqueeze;
+extern operator_set_opname opname_operator__ai_onnx__tanh;
 extern operator_set_opname opname_operator__ai_onnx__constant;
+extern operator_set_opname opname_operator__ai_onnx__rnn;
+extern operator_set_opname opname_operator__ai_onnx__randomnormal;
+extern operator_set_opname opname_operator__ai_onnx__randomuniform;
+extern operator_set_opname opname_operator__ai_onnx__negativeloglikelihoodloss;
+extern operator_set_opname opname_operator__ai_onnx__abs;
+extern operator_set_opname opname_operator__ai_onnx__reciprocal;
+extern operator_set_opname opname_operator__ai_onnx__reducelogsumexp;
+extern operator_set_opname opname_operator__ai_onnx__reducemax;
+extern operator_set_opname opname_operator__ai_onnx__lessorequal;
+extern operator_set_opname opname_operator__ai_onnx__scatterelements;
+extern operator_set_opname opname_operator__ai_onnx__reducemean;
+extern operator_set_opname opname_operator__ai_onnx__cosh;
+extern operator_set_opname opname_operator__ai_onnx__reducemin;
+extern operator_set_opname opname_operator__ai_onnx__reduceprod;
+extern operator_set_opname opname_operator__ai_onnx__squeeze;
+extern operator_set_opname opname_operator__ai_onnx__selu;
 extern operator_set_opname opname_operator__ai_onnx__batchnormalization;
 extern operator_set_opname opname_operator__ai_onnx__sigmoid;
+extern operator_set_opname opname_operator__ai_onnx__slice;
+extern operator_set_opname opname_operator__ai_onnx__reducesumsquare;
 extern operator_set_opname opname_operator__ai_onnx__softmax;
-extern operator_set_opname opname_operator__ai_onnx__convtranspose;
+extern operator_set_opname opname_operator__ai_onnx__softsign;
+extern operator_set_opname opname_operator__ai_onnx__cos;
+extern operator_set_opname opname_operator__ai_onnx__spacetodepth;
+extern operator_set_opname opname_operator__ai_onnx__asinh;
+extern operator_set_opname opname_operator__ai_onnx__tile;
+extern operator_set_opname opname_operator__ai_onnx__reducel2;
+extern operator_set_opname opname_operator__ai_onnx__sqrt;
+extern operator_set_opname opname_operator__ai_onnx__log;
+extern operator_set_opname opname_operator__ai_onnx__sub;
+extern operator_set_opname opname_operator__ai_onnx__scatter;
+extern operator_set_opname opname_operator__ai_onnx__upsample;
 
 operator_set_opdomain opdomain_operator__ai_onnx = {
     .name = "ai.onnx",
     .opnames = {
+        &opname_operator__ai_onnx__greaterorequal,
+        &opname_operator__ai_onnx__celu,
+        &opname_operator__ai_onnx__concatfromsequence,
+        &opname_operator__ai_onnx__softmaxcrossentropyloss,
+        &opname_operator__ai_onnx__splittosequence,
+        &opname_operator__ai_onnx__sequenceerase,
+        &opname_operator__ai_onnx__sequenceat,
+        &opname_operator__ai_onnx__sequenceinsert,
+        &opname_operator__ai_onnx__sequenceconstruct,
+        &opname_operator__ai_onnx__sequenceempty,
+        &opname_operator__ai_onnx__det,
+        &opname_operator__ai_onnx__cumsum,
+        &opname_operator__ai_onnx__roialign,
+        &opname_operator__ai_onnx__nonmaxsuppression,
+        &opname_operator__ai_onnx__isinf,
+        &opname_operator__ai_onnx__qlinearconv,
+        &opname_operator__ai_onnx__convinteger,
+        &opname_operator__ai_onnx__round,
+        &opname_operator__ai_onnx__qlinearmatmul,
+        &opname_operator__ai_onnx__range,
+        &opname_operator__ai_onnx__thresholdedrelu,
+        &opname_operator__ai_onnx__stringnormalizer,
+        &opname_operator__ai_onnx__meanvariancenormalization,
+        &opname_operator__ai_onnx__nonzero,
+        &opname_operator__ai_onnx__where,
+        &opname_operator__ai_onnx__shrink,
+        &opname_operator__ai_onnx__erf,
+        &opname_operator__ai_onnx__atanh,
+        &opname_operator__ai_onnx__acosh,
+        &opname_operator__ai_onnx__onehot,
+        &opname_operator__ai_onnx__tfidfvectorizer,
+        &opname_operator__ai_onnx__maxunpool,
+        &opname_operator__ai_onnx__eyelike,
+        &opname_operator__ai_onnx__constantofshape,
+        &opname_operator__ai_onnx__expand,
+        &opname_operator__ai_onnx__multinomial,
+        &opname_operator__ai_onnx__atan,
+        &opname_operator__ai_onnx__asin,
+        &opname_operator__ai_onnx__lpnormalization,
+        &opname_operator__ai_onnx__ceil,
+        &opname_operator__ai_onnx__randomuniformlike,
+        &opname_operator__ai_onnx__lstm,
+        &opname_operator__ai_onnx__logsoftmax,
         &opname_operator__ai_onnx__matmul,
+        &opname_operator__ai_onnx__bitshift,
+        &opname_operator__ai_onnx__sinh,
+        &opname_operator__ai_onnx__acos,
         &opname_operator__ai_onnx__identity,
+        &opname_operator__ai_onnx__pow,
+        &opname_operator__ai_onnx__mod,
+        &opname_operator__ai_onnx__shape,
+        &opname_operator__ai_onnx__if,
+        &opname_operator__ai_onnx__softplus,
+        &opname_operator__ai_onnx__hardmax,
+        &opname_operator__ai_onnx__hardsigmoid,
+        &opname_operator__ai_onnx__lppool,
+        &opname_operator__ai_onnx__min,
+        &opname_operator__ai_onnx__gatherelements,
+        &opname_operator__ai_onnx__quantizelinear,
+        &opname_operator__ai_onnx__sum,
         &opname_operator__ai_onnx__maxpool,
         &opname_operator__ai_onnx__transpose,
+        &opname_operator__ai_onnx__resize,
+        &opname_operator__ai_onnx__greater,
+        &opname_operator__ai_onnx__scatternd,
+        &opname_operator__ai_onnx__globallppool,
+        &opname_operator__ai_onnx__gemm,
+        &opname_operator__ai_onnx__instancenormalization,
+        &opname_operator__ai_onnx__averagepool,
+        &opname_operator__ai_onnx__matmulinteger,
+        &opname_operator__ai_onnx__sign,
         &opname_operator__ai_onnx__clip,
+        &opname_operator__ai_onnx__einsum,
+        &opname_operator__ai_onnx__dequantizelinear,
+        &opname_operator__ai_onnx__lrn,
+        &opname_operator__ai_onnx__equal,
         &opname_operator__ai_onnx__elu,
+        &opname_operator__ai_onnx__sin,
+        &opname_operator__ai_onnx__pad,
+        &opname_operator__ai_onnx__and,
+        &opname_operator__ai_onnx__gathernd,
         &opname_operator__ai_onnx__relu,
         &opname_operator__ai_onnx__conv,
+        &opname_operator__ai_onnx__size,
         &opname_operator__ai_onnx__argmax,
+        &opname_operator__ai_onnx__isnan,
+        &opname_operator__ai_onnx__div,
+        &opname_operator__ai_onnx__maxroipool,
         &opname_operator__ai_onnx__add,
         &opname_operator__ai_onnx__leakyrelu,
+        &opname_operator__ai_onnx__sequencelength,
+        &opname_operator__ai_onnx__gru,
+        &opname_operator__ai_onnx__reducelogsum,
+        &opname_operator__ai_onnx__floor,
+        &opname_operator__ai_onnx__argmin,
+        &opname_operator__ai_onnx__depthtospace,
+        &opname_operator__ai_onnx__tan,
+        &opname_operator__ai_onnx__cast,
+        &opname_operator__ai_onnx__reducesum,
+        &opname_operator__ai_onnx__less,
+        &opname_operator__ai_onnx__scan,
+        &opname_operator__ai_onnx__concat,
+        &opname_operator__ai_onnx__compress,
+        &opname_operator__ai_onnx__convtranspose,
+        &opname_operator__ai_onnx__topk,
+        &opname_operator__ai_onnx__gather,
+        &opname_operator__ai_onnx__reversesequence,
+        &opname_operator__ai_onnx__xor,
+        &opname_operator__ai_onnx__dropout,
+        &opname_operator__ai_onnx__unique,
+        &opname_operator__ai_onnx__max,
+        &opname_operator__ai_onnx__globalmaxpool,
+        &opname_operator__ai_onnx__exp,
+        &opname_operator__ai_onnx__dynamicquantizelinear,
         &opname_operator__ai_onnx__reshape,
         &opname_operator__ai_onnx__globalaveragepool,
+        &opname_operator__ai_onnx__or,
+        &opname_operator__ai_onnx__randomnormallike,
+        &opname_operator__ai_onnx__loop,
+        &opname_operator__ai_onnx__split,
+        &opname_operator__ai_onnx__mean,
         &opname_operator__ai_onnx__mul,
+        &opname_operator__ai_onnx__neg,
+        &opname_operator__ai_onnx__not,
+        &opname_operator__ai_onnx__reducel1,
+        &opname_operator__ai_onnx__flatten,
+        &opname_operator__ai_onnx__prelu,
+        &opname_operator__ai_onnx__unsqueeze,
+        &opname_operator__ai_onnx__tanh,
         &opname_operator__ai_onnx__constant,
+        &opname_operator__ai_onnx__rnn,
+        &opname_operator__ai_onnx__randomnormal,
+        &opname_operator__ai_onnx__randomuniform,
+        &opname_operator__ai_onnx__negativeloglikelihoodloss,
+        &opname_operator__ai_onnx__abs,
+        &opname_operator__ai_onnx__reciprocal,
+        &opname_operator__ai_onnx__reducelogsumexp,
+        &opname_operator__ai_onnx__reducemax,
+        &opname_operator__ai_onnx__lessorequal,
+        &opname_operator__ai_onnx__scatterelements,
+        &opname_operator__ai_onnx__reducemean,
+        &opname_operator__ai_onnx__cosh,
+        &opname_operator__ai_onnx__reducemin,
+        &opname_operator__ai_onnx__reduceprod,
+        &opname_operator__ai_onnx__squeeze,
+        &opname_operator__ai_onnx__selu,
         &opname_operator__ai_onnx__batchnormalization,
         &opname_operator__ai_onnx__sigmoid,
+        &opname_operator__ai_onnx__slice,
+        &opname_operator__ai_onnx__reducesumsquare,
         &opname_operator__ai_onnx__softmax,
-        &opname_operator__ai_onnx__convtranspose,
+        &opname_operator__ai_onnx__softsign,
+        &opname_operator__ai_onnx__cos,
+        &opname_operator__ai_onnx__spacetodepth,
+        &opname_operator__ai_onnx__asinh,
+        &opname_operator__ai_onnx__tile,
+        &opname_operator__ai_onnx__reducel2,
+        &opname_operator__ai_onnx__sqrt,
+        &opname_operator__ai_onnx__log,
+        &opname_operator__ai_onnx__sub,
+        &opname_operator__ai_onnx__scatter,
+        &opname_operator__ai_onnx__upsample,
         NULL
     }
 };

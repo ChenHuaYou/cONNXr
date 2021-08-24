@@ -2,11 +2,17 @@
 
 #include "operators/operator_set.h"
 
+extern operator_set_opversion opversion_operator__ai_onnx__batchnormalization__1;
+extern operator_set_opversion opversion_operator__ai_onnx__batchnormalization__6;
+extern operator_set_opversion opversion_operator__ai_onnx__batchnormalization__7;
 extern operator_set_opversion opversion_operator__ai_onnx__batchnormalization__9;
 
 operator_set_opname opname_operator__ai_onnx__batchnormalization = {
     .name = "BatchNormalization",
     .opversions = {
+        &opversion_operator__ai_onnx__batchnormalization__1,
+        &opversion_operator__ai_onnx__batchnormalization__6,
+        &opversion_operator__ai_onnx__batchnormalization__7,
         &opversion_operator__ai_onnx__batchnormalization__9,
         NULL
     }

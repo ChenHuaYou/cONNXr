@@ -6,18 +6,18 @@
 #include "stdbool.h"
 
 bool
-operator_check(node_context *ctx, operator_info *info);
+operator_check(Onnx__NodeProto *ctx, operator_info *info);
 
 bool
-operator_check_range(node_context *ctx, operator_info *info);
+operator_check_range(Onnx__NodeProto *ctx, operator_info *info);
 
 bool
-operator_check_attributes(node_context *ctx, operator_info *info);
+operator_check_attributes(Onnx__NodeProto *ctx, operator_info *info);
 
 bool
-operator_check_tensors(node_context *ctx, operator_info *info);
+operator_check_tensors(Onnx__NodeProto *ctx, operator_info *info);
 
 bool
-operator_check_constraint(node_context *ctx, operator_info *info);
+operator_check_constraint(Onnx__NodeProto *ctx, operator_info *info);
 
 #endif

@@ -14,9 +14,9 @@ prepare_operator__ai_onnx__argmax__12(
 
     /* UNCOMMENT AS NEEDED */
 
-    Onnx__TensorProto *i_data = searchInputByIndex(ctx, 0);
+    //Onnx__TensorProto *i_data = searchInputByIndex(ctx, 0);
 
-    TRACE_TENSOR(2, true, i_data);
+    // TRACE_TENSOR(2, true, i_data);
 
     // Onnx__AttributeProto *a_axis = searchAttributeNyName(ctx->onnx_node->n_attribute,ctx->onnx_node->attribute,"axis");
     // Onnx__AttributeProto *a_keepdims = searchAttributeNyName(ctx->onnx_node->n_attribute,ctx->onnx_node->attribute,"keepdims");
@@ -48,32 +48,22 @@ prepare_operator__ai_onnx__argmax__12(
 
     /* INITIALIZE OUTPUTS DATA_TYPE AND SHAPE HERE */
 
-    // Allocate memory
-    o_reduced->dims = malloc(i_data->dims[1] * sizeof(int64_t));
-
-    // Populate some parameters
-    o_reduced->n_dims       = 1;
-    o_reduced->dims[0]      = i_data->dims[1];
-    o_reduced->has_raw_data = 0;
-
-    // INT64 is hardcoded by design
-    o_reduced->data_type = ONNX__TENSOR_PROTO__DATA_TYPE__INT64;
 
     /* MALLOC OUTPUT TENSORS HERE */
 
     mallocTensorData(o_reduced);
 
-    TRACE_TENSOR(2, true, o_reduced);
+    // TRACE_TENSOR(2, true, o_reduced);
 
     /* CHOOSE EXECUTER AND CONTEXT HERE */
     /* YOU MAY USE THE GENERATED RESOLVER */
 
-    ctx->executer = resolve_operator__ai_onnx__argmax__12(ctx);
+    ctx->executer = execute_operator__ai_onnx__argmax__12;
     // ctx->executer_context = op_ctx;
 
     TRACE_EXIT(1);
 
     /* CHANGE RETURN CODE IF THIS PREPARER IS VALID */
-    // return OP_ENOSYS;
-    return OP_OK;
+    return OP_ENOSYS;
+    // return OP_OK;
 }

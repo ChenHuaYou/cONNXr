@@ -38,6 +38,12 @@
   #define TRACE_LEVEL2(fmt, ...){}
 #endif
 
+#define PRINT_1D_ARRAY(arr, num) do { \
+    for(int i=0; i<num; i++){\
+        TRACE_LEVEL0("%d\n",arr[i]);\
+    }\
+}while(0)
+
 void debug_print_attributes(size_t n_attribute, Onnx__AttributeProto **attribute);
 void debug_print_dims(size_t n_dims, int64_t *dims);
 void debug_prettyprint_tensorproto(Onnx__TensorProto *tp);

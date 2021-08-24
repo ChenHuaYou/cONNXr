@@ -15,7 +15,7 @@
  * Transpose the input tensor similar to numpy.transpose. For example, when
  * perm=(1, 0, 2), given an input tensor of shape (1, 2, 3), the output shape
  * will be (2, 1, 3).
- *
+ * 
  * Constraint T:
  *   Constrain input and output types to all tensor types.
  *   Allowed Types: tensor_bool, tensor_complex128, tensor_complex64,
@@ -37,12 +37,12 @@
  * Attribute INTS perm (optional):
  *   A list of integers. By default, reverse the dimensions, otherwise permute
  *   the axes according to the values given.
- *
- * @since version 1
- *
+*
+* @since version 1
+*
  * @see io/onnx/onnx/defs/tensor/defs.cc:794
  * @see https://github.com/onnx/onnx/blob/master/docs/Operators.md#Transpose
- */
+*/
 
 operator_status
 prepare_operator__ai_onnx__transpose__1(
@@ -57,83 +57,8 @@ typedef struct {
 
 } context_operator__ai_onnx__transpose__1;
 
-operator_executer
-resolve_operator__ai_onnx__transpose__1(
-    Onnx__NodeProto *ctx
-);
-
 operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_bool(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_complex128(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_complex64(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_double(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_float(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_float16(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_int16(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_int32(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_int64(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_int8(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_string(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_uint16(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_uint32(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_uint64(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__transpose__1__T_tensor_uint8(
+execute_operator__ai_onnx__transpose__1(
     Onnx__NodeProto *ctx
 );
 

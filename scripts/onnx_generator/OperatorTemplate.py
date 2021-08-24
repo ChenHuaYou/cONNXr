@@ -3,21 +3,23 @@ import itertools
 
 class Input(Template):
     _template = '''
-// Onnx__TensorProto *i_{name} = searchInputByName(ctx, {index});
+{comment}Onnx__TensorProto *i_{name} = searchInputByIndex(ctx, {index});
 '''
-    def __init__(self, input, index):
+    def __init__(self, input, index, comment="//"):
         self.input = input
         self.name = input.name
         self.index = index
+        self.comment = comment
 
 class Output(Template):
     _template = '''
-// Onnx__TensorProto *o_{name} = searchOutputByName(ctx, {index});
+{comment}Onnx__TensorProto *o_{name} = searchOutputByIndex(ctx, {index});
 '''
-    def __init__(self, output, index):
+    def __init__(self, output, index, comment="//"):
         self.output = output
         self.name = output.name
         self.index = index
+        self.comment = comment
 
 class OutputFrees(Template):
     def __init__(self, output):
@@ -193,7 +195,7 @@ class ExecuteTemplate(Template):
 
 operator_status
 execute_{schema.operator_name}{suffix}(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {{
     TRACE_ENTRY(1);
@@ -260,7 +262,7 @@ class PrepareTemplate(Template):
 
 operator_status
 prepare_{schema.operator_name}(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {{
     TRACE_ENTRY(1);
@@ -303,7 +305,7 @@ prepare_{schema.operator_name}(
     /* CHOOSE EXECUTER AND CONTEXT HERE */
     /* YOU MAY USE THE GENERATED RESOLVER */
 
-    // ctx->executer = resolve_{schema.operator_name}(ctx);
+    ctx->executer = execute_{schema.operator_name};
     // ctx->executer_context = op_ctx;
 
     TRACE_EXIT(1);
@@ -318,8 +320,8 @@ prepare_{schema.operator_name}(
         self.path = path
         self.schema = header.schema
         self.include = f'#include "{header.filepath().parts[-1]}"'
-        self.inputs = "\n    ".join([str(Input(i,index)) for index,i in enumerate(self.schema.inputs)])
-        self.outputs = "\n    ".join([str(Output(o,index)) for index,o in enumerate(self.schema.outputs)])
+        self.inputs = "\n    ".join([str(Input(i,index,comment="//")) for index,i in enumerate(self.schema.inputs)])
+        self.outputs = "\n    ".join([str(Output(o,index,"")) for index,o in enumerate(self.schema.outputs)])
         self.attributes = "\n    ".join([str(Attribute(a)) for a in self.schema.attributes])
         self.trace_inputs = "\n    ".join([str(TraceInput(i)) for i in self.schema.inputs])
         self.trace_outputs = "\n    ".join([str(TraceOutput(o)) for o in self.schema.outputs])
@@ -331,7 +333,7 @@ prepare_{schema.operator_name}(
         defaults = itertools.chain(*[ContextDefaults(a) for a in self.schema.attributes])
         self.defaults = "\n    ".join([ str(d) for d in defaults])
 
-        self.malloc_outputs = "\n    ".join([f"// mallocTensorData(o_{o.name});" for o in self.schema.outputs])
+        self.malloc_outputs = "\n    ".join([f"mallocTensorData(o_{o.name});" for o in self.schema.outputs])
         self.trace_context = "\n    ".join([str(TraceContext(a,prefix="op_ctx->")) for a in self.schema.attributes])
 
 class FreeTemplate(Template):
@@ -345,7 +347,7 @@ class FreeTemplate(Template):
 
 void
 free_{schema.operator_name}(
-    node_context *ctx
+    Onnx__NodeProto *ctx
 )
 {{
     TRACE_ENTRY(1);
@@ -416,7 +418,7 @@ class Templates:
     def __iter__(self):
         yield PrepareTemplate(self.header, self.path)
         yield FreeTemplate(self.header, self.path)
-        types = self.header.schema.constraints.typePermutations(filterInput=True)
+        #types = self.header.schema.constraints.typePermutations(filterInput=True)
         yield ExecuteTemplate(self.header, self.path)
-        for t in types:
-            yield ExecuteTemplate(self.header, self.path, suffix=f"__{t}")
+        #for t in types:
+        #    yield ExecuteTemplate(self.header, self.path, suffix=f"__{t}")

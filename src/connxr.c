@@ -44,10 +44,10 @@ int main(int argc, char **argv){
   double cpu_time_used;
 
   printf("Resolving model...\n");
-  resolve(model, inputs, 1);
+  resolve(model);
   printf("Running inference on %s model...\n", model->graph->name);
   start = clock();
-  inference(model, inputs, 1);
+  inference(model, inputs);
   end = clock();
   printf("finished!\n");
 
@@ -56,7 +56,7 @@ int main(int argc, char **argv){
   printf("Predicted in %f cycles or %f seconds\n", (double) (end - start), cpu_time_used);
 
   /* Print the last output which should be the model output */
-  for (int i = 0; i < all_context[_populatedIdx].outputs[0]->n_float_data; i++){
+  for (int i = 0; i < model->graph->node[model->graph->n_node-1]->outputs[0]->n_float_data; i++){
     //printf("n_float_data[%d] = %f\n", i, all_context[_populatedIdx].outputs[0]->float_data[i]);
   }
 
@@ -64,18 +64,18 @@ int main(int argc, char **argv){
     printf("Writing dump file with intermediate outputs\n");
     //int max_print = 10;
     FILE *fp = fopen("dump.txt", "w+");
-    for (int i = 0; i < _populatedIdx + 1; i++){
-      fprintf(fp, "name=%s\n", all_context[i].outputs[0]->name);
+    for (int i = 0; i < model->graph->n_node; i++){
+      fprintf(fp, "name=%s\n", model->graph->node[i]->outputs[0]->name);
       fprintf(fp, "shape=");
-      for (int dim_index = 0; dim_index < all_context[i].outputs[0]->n_dims; dim_index++){
-        fprintf(fp, "%" PRId64 ",", all_context[i].outputs[0]->dims[dim_index]);
+      for (int dim_index = 0; dim_index < model->graph->node[i]->outputs[0]->n_dims; dim_index++){
+        fprintf(fp, "%" PRId64 ",", model->graph->node[i]->outputs[0]->dims[dim_index]);
       }
       fprintf(fp, "\n");
       //int float_to_print = all_context[i].outputs[0]->n_float_data > max_print ? max_print : all_context[i].outputs[0]->n_float_data;
       fprintf(fp, "tensor=");
       /* TODO: Just implemented for float */
-      for (int data_index = 0; data_index < all_context[i].outputs[0]->n_float_data; data_index++){
-        fprintf(fp, "%f,", all_context[i].outputs[0]->float_data[data_index]);
+      for (int data_index = 0; data_index < model->graph->node[i]->outputs[0]->n_float_data; data_index++){
+        fprintf(fp, "%f,", model->graph->node[i]->outputs[0]->float_data[data_index]);
       }
       fprintf(fp, "\n");
     }

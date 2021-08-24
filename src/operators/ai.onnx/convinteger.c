@@ -37,12 +37,12 @@ int operator_convinteger(Onnx__NodeProto *ctx)
   debug_print_dims(X->n_dims, X->dims);
 
   // Borrowed form https://github.com/pjreddie/darknet/blob/61c9d02ec461e30d55762ec7669d6a1d3c356fb2/src/convolutional_layer.c#L445
-  Onnx__AttributeProto *auto_pad = searchAttributeNyName(ctx->onnx_node->n_attribute, ctx->onnx_node->attribute, "auto_pad");
-  //Onnx__AttributeProto *dilations = searchAttributeNyName(ctx->onnx_node->n_attribute, ctx->onnx_node->attribute, "dilations");
-  //Onnx__AttributeProto *group = searchAttributeNyName(ctx->onnx_node->n_attribute, ctx->onnx_node->attribute, "group");
-  Onnx__AttributeProto *kernel_shape = searchAttributeNyName(ctx->onnx_node->n_attribute, ctx->onnx_node->attribute, "kernel_shape");
-  //Onnx__AttributeProto *pads = searchAttributeNyName(ctx->onnx_node->n_attribute, ctx->onnx_node->attribute, "pads");
-  Onnx__AttributeProto *strides = searchAttributeNyName(ctx->onnx_node->n_attribute, ctx->onnx_node->attribute, "strides");
+  Onnx__AttributeProto *auto_pad = searchAttributeNyName(ctx->n_attribute, ctx->attribute, "auto_pad");
+  //Onnx__AttributeProto *dilations = searchAttributeNyName(ctx->n_attribute, ctx->attribute, "dilations");
+  //Onnx__AttributeProto *group = searchAttributeNyName(ctx->n_attribute, ctx->attribute, "group");
+  Onnx__AttributeProto *kernel_shape = searchAttributeNyName(ctx->n_attribute, ctx->attribute, "kernel_shape");
+  //Onnx__AttributeProto *pads = searchAttributeNyName(ctx->n_attribute, ctx->attribute, "pads");
+  Onnx__AttributeProto *strides = searchAttributeNyName(ctx->n_attribute, ctx->attribute, "strides");
 
   int64_t h_kernel, w_kernel, d_kernel, h_stride, w_stride;
   h_kernel = w_kernel = d_kernel = h_stride = w_stride = 1;
@@ -116,10 +116,10 @@ int operator_convinteger(Onnx__NodeProto *ctx)
                 int32_t valBeforeScaling = X->int32_data[index];
 
                 /* TODO Ugly for performance, just testing*/
-                if (ctx->onnx_node->n_input == 3){ // if x_zero_point. Wrong assumption, migh be w_zero_point, but quite rare
+                if (ctx->n_input == 3){ // if x_zero_point. Wrong assumption, migh be w_zero_point, but quite rare
                   valBeforeScaling = valBeforeScaling + x_zero_point->int32_data[0];
                 }
-                if (ctx->onnx_node->n_input == 4){ // if w_zero_point
+                if (ctx->n_input == 4){ // if w_zero_point
                   valBeforeScaling = valBeforeScaling * w_zero_point->int32_data[0];
                 }
 

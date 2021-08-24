@@ -2,7 +2,6 @@
 #include "operator__ai_onnx__batchnormalization__9.h"
 #include "tracing.h"
 #include "utils.h"
-#include <float.h>
 
 operator_status
 prepare_operator__ai_onnx__batchnormalization__9(
@@ -15,61 +14,57 @@ prepare_operator__ai_onnx__batchnormalization__9(
 
     /* UNCOMMENT AS NEEDED */
 
-    Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
-    // Onnx__TensorProto *i_scale = searchInputByIndex(ctx, 1);
-    // Onnx__TensorProto *i_B = searchInputByIndex(ctx, 2);
-    // Onnx__TensorProto *i_mean = searchInputByIndex(ctx, 3);
-    // Onnx__TensorProto *i_var = searchInputByIndex(ctx, 4);
+    //Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
+    //Onnx__TensorProto *i_scale = searchInputByIndex(ctx, 1);
+    //Onnx__TensorProto *i_B = searchInputByIndex(ctx, 2);
+    //Onnx__TensorProto *i_mean = searchInputByIndex(ctx, 3);
+    //Onnx__TensorProto *i_var = searchInputByIndex(ctx, 4);
 
-    TRACE_TENSOR(2, true, i_X);
+    // TRACE_TENSOR(2, true, i_X);
     // TRACE_TENSOR(2, true, i_scale);
     // TRACE_TENSOR(2, true, i_B);
     // TRACE_TENSOR(2, true, i_mean);
     // TRACE_TENSOR(2, true, i_var);
 
-    Onnx__AttributeProto *a_epsilon = searchAttributeNyName(ctx->onnx_node->n_attribute,ctx->onnx_node->attribute,"epsilon");
+    // Onnx__AttributeProto *a_epsilon = searchAttributeNyName(ctx->onnx_node->n_attribute,ctx->onnx_node->attribute,"epsilon");
     // Onnx__AttributeProto *a_momentum = searchAttributeNyName(ctx->onnx_node->n_attribute,ctx->onnx_node->attribute,"momentum");
 
-    TRACE_ATTRIBUTE(2, a_epsilon, a_epsilon);
+    // TRACE_ATTRIBUTE(2, a_epsilon, a_epsilon);
     // TRACE_ATTRIBUTE(2, a_momentum, a_momentum);
 
     Onnx__TensorProto *o_Y = searchOutputByIndex(ctx, 0);
-    // Onnx__TensorProto *o_mean = searchOutputByIndex(ctx, 1);
-    // Onnx__TensorProto *o_var = searchOutputByIndex(ctx, 2);
-    // Onnx__TensorProto *o_saved_mean = searchOutputByIndex(ctx, 3);
-    // Onnx__TensorProto *o_saved_var = searchOutputByIndex(ctx, 4);
+    Onnx__TensorProto *o_mean = searchOutputByIndex(ctx, 1);
+    Onnx__TensorProto *o_var = searchOutputByIndex(ctx, 2);
+    Onnx__TensorProto *o_saved_mean = searchOutputByIndex(ctx, 3);
+    Onnx__TensorProto *o_saved_var = searchOutputByIndex(ctx, 4);
 
     /* ALLOCATE AND INITIALIZE CONTEXT HERE IF NEEDED */
 
-    float default_epsilon = FLT_MIN;
+    // float default_epsilon = ;
     // float default_momentum = ;
 
-    context_operator__ai_onnx__batchnormalization__9 *op_ctx = NULL;
-    op_ctx = malloc(sizeof(context_operator__ai_onnx__batchnormalization__9));
-    TRACE_FATAL(0 , !op_ctx, "could not allocate executer_context");
+    // context_operator__ai_onnx__batchnormalization__9 *op_ctx = NULL;
+    // op_ctx = malloc(sizeof(context_operator__ai_onnx__batchnormalization__9));
+    // TRACE_FATAL(0 , !op_ctx, "could not allocate executer_context");
 
-    op_ctx->epsilon = a_epsilon?a_epsilon->f:default_epsilon;
+    // op_ctx->epsilon = a_epsilon?a_epsilon->f:default_epsilon;
     // op_ctx->momentum = a_momentum?a_momentum->f:default_momentum;
 
-    TRACE_VAR(2, true, op_ctx->epsilon, "%f");
+    // TRACE_VAR(2, true, op_ctx->epsilon, "%f");
     // TRACE_VAR(2, true, op_ctx->momentum, "%f");
 
     /* INITIALIZE OUTPUTS DATA_TYPE AND SHAPE HERE */
 
-    o_Y->dims = ARRAYDUP(i_X->dims, i_X->n_dims);
-    o_Y->n_dims = i_X->n_dims;
-    o_Y->has_raw_data = 0;
-    o_Y->data_type    = i_X->data_type;
 
     /* MALLOC OUTPUT TENSORS HERE */
 
     mallocTensorData(o_Y);
-    // mallocTensorData(o_mean);
-    // mallocTensorData(o_var);
-    // mallocTensorData(o_saved_mean);
-    // mallocTensorData(o_saved_var);
+    mallocTensorData(o_mean);
+    mallocTensorData(o_var);
+    mallocTensorData(o_saved_mean);
+    mallocTensorData(o_saved_var);
 
-    TRACE_TENSOR(2, true, o_Y);
+    // TRACE_TENSOR(2, true, o_Y);
     // TRACE_TENSOR(2, mean, o_mean);
     // TRACE_TENSOR(2, var, o_var);
     // TRACE_TENSOR(2, saved_mean, o_saved_mean);
@@ -78,12 +73,12 @@ prepare_operator__ai_onnx__batchnormalization__9(
     /* CHOOSE EXECUTER AND CONTEXT HERE */
     /* YOU MAY USE THE GENERATED RESOLVER */
 
-    ctx->executer = resolve_operator__ai_onnx__batchnormalization__9(ctx);
-    ctx->executer_context = op_ctx;
+    ctx->executer = execute_operator__ai_onnx__batchnormalization__9;
+    // ctx->executer_context = op_ctx;
 
     TRACE_EXIT(1);
 
     /* CHANGE RETURN CODE IF THIS PREPARER IS VALID */
-    // return OP_ENOSYS;
-    return OP_OK;
+    return OP_ENOSYS;
+    // return OP_OK;
 }

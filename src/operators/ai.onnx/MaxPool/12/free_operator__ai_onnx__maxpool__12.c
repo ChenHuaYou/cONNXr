@@ -14,7 +14,7 @@ free_operator__ai_onnx__maxpool__12(
 
     /* UNCOMMENT AS NEEDED */
 
-    // Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
+    //Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, i_X);
 
@@ -34,8 +34,8 @@ free_operator__ai_onnx__maxpool__12(
     // TRACE_ATTRIBUTE(2, a_storage_order, a_storage_order);
     // TRACE_ATTRIBUTE(2, a_strides, a_strides);
 
-    // Onnx__TensorProto *o_Y = searchOutputByIndex(ctx, 0);
-    // Onnx__TensorProto *o_Indices = searchOutputByIndex(ctx, 1);
+    //Onnx__TensorProto *o_Y = searchOutputByIndex(ctx, 0);
+    //Onnx__TensorProto *o_Indices = searchOutputByIndex(ctx, 1);
 
     // TRACE_TENSOR(2, true, o_Y);
     // TRACE_TENSOR(2, Indices, o_Indices);

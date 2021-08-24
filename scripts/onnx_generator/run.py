@@ -137,9 +137,9 @@ for name2version2schema in domain2name2version2schema.values():
 note("generating onnx operator headers")
 path = f"{args.path[-1]}/{args.header[-1]}/"
 headers = [ OperatorHeader.Header(s,path) for s in schemas ]
-note("generating onnx operator type resolvers")
-path = f"{args.path[-1]}/{args.resolve[-1]}/"
-resolvers = [ OperatorTypeResolver.Source(h,path) for h in headers ]
+#note("generating onnx operator type resolvers")
+#path = f"{args.path[-1]}/{args.resolve[-1]}/"
+#resolvers = [ OperatorTypeResolver.Source(h,path) for h in headers ]
 note("generating onnx operator sets")
 path = f"{args.path[-1]}/{args.sets[-1]}/"
 sets = OperatorSets.Sets(schemas,path)
@@ -152,8 +152,8 @@ info = [ OperatorInfo.Source(h, path) for h in headers ]
 files = []
 if not args.no_header:
     files.extend(map(lambda x: (bool(args.force_header),x),headers))
-if not args.no_resolve:
-    files.extend(map(lambda x: (bool(args.force_resolve),x),resolvers))
+#if not args.no_resolve:
+#    files.extend(map(lambda x: (bool(args.force_resolve),x),resolvers))
 if not args.no_sets:
     files.extend(map(lambda x: (bool(args.force_sets),x),sets))
 if not args.no_template:
@@ -168,12 +168,9 @@ if not args.path[-1]:
 else:
     for force,obj in files:
         path = obj.filepath()
-        if path.exists() and not (args.force or force):
-            warning(f"skipping existing file '{path}'",1)
-            continue
-        note(f"writing file {path}",3)
-        if not args.dryrun:
+        if "ai.onnx" in str(path):
+            note(f"writing file {path}",0)
             os.makedirs(path.parent,exist_ok=True)
             path.open("w").write(str(obj))
-        writecount += 1
+            writecount += 1
 note(f"wrote {writecount} of {len(files)} files")

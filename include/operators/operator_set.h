@@ -42,13 +42,10 @@ operator_set_find_preparer(
     size_t version
 ) {
     operator_set_opversion *tmp = NULL;
-    for (operator_set_opdomain **opdomain = operator_set; *opdomain; opdomain++)
-    {
-        for (operator_set_opname **opname = (*opdomain)->opnames; *opname; opname++)
-        {
+    for (operator_set_opdomain **opdomain = operator_set; *opdomain; opdomain++){
+        for (operator_set_opname **opname = (*opdomain)->opnames; *opname; opname++){
             if (strcmp((*opname)->name,name) == 0) {
-                for (operator_set_opversion **opversion = (*opname)->opversions; *opversion; opversion++)
-                {
+                for (operator_set_opversion **opversion = (*opname)->opversions; *opversion; opversion++){
                     if ((*opversion)->version <= version) {
                         if (!tmp || (*opversion)->version >= tmp->version) {
                             tmp = *opversion;

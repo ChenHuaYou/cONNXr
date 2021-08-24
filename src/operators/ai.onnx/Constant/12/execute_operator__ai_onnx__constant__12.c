@@ -14,6 +14,10 @@ execute_operator__ai_onnx__constant__12(
 
     /* UNCOMMENT AS NEEDED */
 
+    
+
+    
+
     // context_operator__ai_onnx__constant__12 *op_ctx = ctx->executer_context;
 
     // Onnx__SparseTensorProto* sparse_value = op_ctx->sparse_value;
@@ -37,17 +41,16 @@ execute_operator__ai_onnx__constant__12(
     // TRACE_VAR(2, true, value_string, "\"%s\"");
     // TRACE_ARRAY(2, true, value_strings, , n_value_strings, "\"%s\"");
 
-    __attribute__((unused))
-    Onnx__TensorProto *o_output = searchOutputByIndex(ctx, 0);
+    //Onnx__TensorProto *o_output = searchOutputByIndex(ctx, 0);
 
-    TRACE_TENSOR(2, true, o_output);
+    // TRACE_TENSOR(2, true, o_output);
 
     /* DO CALCULATION HERE */
-    //nothing to do
+
 
     TRACE_EXIT(1);
 
     /* CHANGE RETURN CODE IF THIS EXECUTER IS VALID */
-    // return OP_ENOSYS;
-    return OP_OK;
+    return OP_ENOSYS;
+    // return OP_OK;
 }

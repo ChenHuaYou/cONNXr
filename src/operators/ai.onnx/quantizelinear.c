@@ -59,7 +59,7 @@ int operator_quantizelinear(Onnx__NodeProto *ctx)
   printf("type = %d\n", X->data_type);
   if (X->data_type == ONNX__TENSOR_PROTO__DATA_TYPE__FLOAT){
     /* TODO third parameter is options, its assumed its always there */
-    if (ctx->onnx_node->n_input != 3){return 1;}
+    if (ctx->n_input != 3){return 1;}
     for(int i = 0; i < y->n_int32_data; i++){
       int32_t value = divAndRoundEven(X->float_data[i], y_scale->float_data[0]);/* +
                       y_zero_point->int32_data[0];*/

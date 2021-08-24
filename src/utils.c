@@ -5,47 +5,83 @@
 #include "onnx.pb-c.h"
 #include "utils.h"
 #include "tracing.h"
+#include "trace.h"
+
+// check node's : 
+// name: 
+//  ..
+// input:
+//  name=addr, ..
+// output:
+//  name=addr, ..
+
+void checkNode(Onnx__NodeProto *node){
+    printf("\nname: %s\n",node->name);
+    printf("input:\n");
+    for(int i=0;i<node->n_input;i++){
+        if(node->inputs[i]!=NULL){
+            TRACE_LEVEL0("%s=%p/%d\n",node->input[i],node->inputs[i],node->inputs[i]->data_type);
+        }else{
+            TRACE_LEVEL0("%s=%p/undef\n",node->input[i],node->inputs[i]);
+        }
+    }
+    printf("\noutput:\n");
+    for(int i=0;i<node->n_output;i++){
+        printf("%s=%p/%d ",node->output[i],node->outputs[i],node->outputs[i]->data_type);
+    }
+    printf("\n\n");
+}
 
 
-// TODO Rethink this function?
-Onnx__TensorProto* searchTensorProtoByName(Onnx__ModelProto *model,char *name)
+// TODO connect input from mid-output or input
+void connectNodes(Onnx__ModelProto *model, int k_node, int k_input)
 {
   TRACE_ENTRY(1);
   TRACE(1, true, "Searching for TensorProto with name=%s", name);
 
+  bool connected = false;
   // Search in initializers
   for (int initializer = 0; initializer < model->graph->n_initializer; initializer++)
   {
-    if (!strcmp(model->graph->initializer[initializer]->name, name))
+    if (!strcmp(model->graph->initializer[initializer]->name, model->graph->node[k_node]->input[k_input]))
     {
       TRACE(1, true, "Found TensorProto in initializer list with name=%s", model->graph->initializer[initializer]->name);
       TRACE_EXIT(1);
-      return model->graph->initializer[initializer];
+      model->graph->node[k_node]->inputs[k_input] = model->graph->initializer[initializer];
+      connected = true;
+      return;
     }
   }
   // Search in previous node's output
   for (int i_node = 0; i_node < model->graph->n_node; i_node++){
       for (int i_output = 0; i_output < model->graph->node[i_node]->n_output; i_output++){
-          if (!strcmp(model->graph->node[i_node]->output[i_output], name)){
+          if (!strcmp(model->graph->node[i_node]->output[i_output], model->graph->node[k_node]->input[k_input])){
               TRACE(1, true, "Found TensorProto in node's ouput list with name=%s", model->graph->initializer[initializer]->name);
               TRACE_EXIT(1);
-              return model->graph->node[i_node]->outputs[i_output];
+              model->graph->node[k_node]->inputs[k_input] = model->graph->node[i_node]->outputs[i_output];
+              connected = true;
+              return;
           }
       }
   }
   // Search in graph's inputs
   for (int i_input = 0; i_input < model->graph->n_input; i_input++){
-      if (!strcmp(model->graph->input[i_input]->name, name)){
+      if (!strcmp(model->graph->input[i_input]->name, model->graph->node[k_node]->input[k_input])){
           TRACE(1, true, "Found TensorProto in input list with name=%s", model->graph->initializer[initializer]->name);
           TRACE_EXIT(1);
-          return model->graph->inputs[i_input];
+          model->graph->node[k_node]->inputs[k_input] = NULL;
+          model->graph->inputs[i_input] = &model->graph->node[k_node]->inputs[k_input];
+          connected = true;
+          return;
       }
-
+  }
+  if(!connected) {
+      printf("connect failed\n");
+      exit(EXIT_FAILURE);
   }
 
   TRACE_WARN(1, true, "%s was not found anywhere, maybe you should worry", name);
   TRACE_EXIT(1);
-  return NULL;
 }
 
 Onnx__TensorProto* searchInputByIndex(Onnx__NodeProto *ctx,
@@ -150,6 +186,7 @@ Onnx__ModelProto* openOnnxFile(char *fname){
 
   model = onnx__model_proto__unpack(NULL,len,ret);
   free(ret);
+  model->resolved = false;
 
   TRACE_EXIT(1);
   return model;
@@ -178,6 +215,7 @@ Onnx__TensorProto *openTensorProtoFile(char *fname){
   TRACE(1, true, "length of file %ld", len);
 
   model = onnx__tensor_proto__unpack(NULL,len,ret);
+  free(ret);
 
   TRACE_EXIT(1);
   return model;
@@ -646,3 +684,55 @@ freeTensorData(Onnx__TensorProto *dst) {
 
   return *data;
 }
+
+
+/* When operating on two arrays, NumPy compares their shapes element-wise. 
+ * It starts with the trailing (i.e. rightmost) dimensions and works its 
+ * way left. Two dimensions are compatible when
+ * they are equal, or
+ * one of them is 1
+ * If these conditions are not met, a ValueError: operands could not be broadcast together exception is thrown, 
+ * indicating that the arrays have incompatible shapes. The size of the 
+ * resulting array is the size that is not 1 along each axis of the inputs.
+*/
+
+#define MIN(x,y) ((x)<(y)?(x):(y))
+
+bool tensorCheckBroadcasting(Onnx__TensorProto *src, 
+        Onnx__TensorProto *dst){
+    bool valid = true;
+    for(int i=MIN(src->n_dims,dst->n_dims)-1; i>=0; i--){
+        if(src->dims[i]!=dst->dims[i] && MIN(src->dims[i],dst->dims[i])!=1) 
+            valid = false; 
+    }
+    return valid;
+}
+
+void tensorIdxToSubscript(Onnx__TensorProto *x, int *subscript, int idx){
+    int divisor = 1;
+    for(int i=1; i<x->n_dims; i++){
+        divisor *= x->dims[i];
+    }
+    for(int i=1; i<x->n_dims; i++){
+        subscript[i-1] = idx / divisor;
+        idx = idx % divisor;
+        divisor = divisor / x->dims[i];
+    }
+    subscript[x->n_dims-1] = idx;
+}
+
+int tensorSubscriptToIdx(Onnx__TensorProto *x,int *subscript){
+    int idx = 0;
+    int multiplier = 1;
+    for(int i=1; i<x->n_dims; i++){
+        multiplier *= x->dims[i];
+    }
+    for(int i=1; i<x->n_dims; i++){
+        idx += MIN(subscript[i-1],x->dims[i-1]) * multiplier;
+        multiplier = multiplier / x->dims[i];
+    }
+    idx += MIN(subscript[x->n_dims-1],x->dims[x->n_dims-1]);
+    return idx;
+}
+
+

@@ -14,7 +14,7 @@
  *
  * The operator computes the softmax (normalized exponential) values for each layer in the batch
  *  of the given input.
- *
+ * 
  * The input does not need to explicitly be a 2D vector; rather, it will be
  * coerced into one. For an arbitrary n-dimensional tensor
  * input \in [a_0, a_1, ..., a_{k-1}, a_k, ..., a_{n-1}] and k is
@@ -26,7 +26,7 @@
  * Each of these dimensions must be matched correctly, or else the operator
  * will throw errors. The output tensor has the same shape
  * and contains the softmax values of the corresponding input.
- *
+ * 
  * Constraint T:
  *   Constrain input and output types to float tensors.
  *   Allowed Types: tensor_double, tensor_float, tensor_float16
@@ -43,12 +43,12 @@
  *   because the 0th axis most likely describes the batch_size. Negative value
  *   means counting dimensions from the back. Accepted range is [-r, r-1] where
  *   r = rank(input).
- *
- * @since version 11
- *
+*
+* @since version 11
+*
  * @see io/onnx/onnx/defs/math/defs.cc:783
  * @see https://github.com/onnx/onnx/blob/master/docs/Operators.md#Softmax
- */
+*/
 
 operator_status
 prepare_operator__ai_onnx__softmax__11(
@@ -59,28 +59,11 @@ extern operator_info info_operator__ai_onnx__softmax__11;
 
 typedef struct {
     int64_t axis;
-    int64_t N;
-    int64_t D;
 
 } context_operator__ai_onnx__softmax__11;
 
-operator_executer
-resolve_operator__ai_onnx__softmax__11(
-    Onnx__NodeProto *ctx
-);
-
 operator_status
-execute_operator__ai_onnx__softmax__11__T_tensor_double(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__softmax__11__T_tensor_float(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__softmax__11__T_tensor_float16(
+execute_operator__ai_onnx__softmax__11(
     Onnx__NodeProto *ctx
 );
 

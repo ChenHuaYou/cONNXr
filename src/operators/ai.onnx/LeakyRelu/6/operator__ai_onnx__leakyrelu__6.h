@@ -15,7 +15,7 @@
  * LeakyRelu takes input data (Tensor<T>) and an argument alpha, and produces one
  * output data (Tensor<T>) where the function `f(x) = alpha * x for x < 0`,
  * `f(x) = x for x >= 0`, is applied to the data tensor elementwise.
- *
+ * 
  * Constraint T:
  *   Constrain input and output types to float tensors.
  *   Allowed Types: tensor_double, tensor_float, tensor_float16
@@ -27,12 +27,12 @@
  *   Allowed Types: tensor_double, tensor_float, tensor_float16
  * Attribute FLOAT alpha (optional):
  *   Coefficient of leakage.
- *
- * @since version 6
- *
+*
+* @since version 6
+*
  * @see io/onnx/onnx/defs/math/defs.cc:340
  * @see https://github.com/onnx/onnx/blob/master/docs/Operators.md#LeakyRelu
- */
+*/
 
 operator_status
 prepare_operator__ai_onnx__leakyrelu__6(
@@ -46,23 +46,8 @@ typedef struct {
 
 } context_operator__ai_onnx__leakyrelu__6;
 
-operator_executer
-resolve_operator__ai_onnx__leakyrelu__6(
-    Onnx__NodeProto *ctx
-);
-
 operator_status
-execute_operator__ai_onnx__leakyrelu__6__T_tensor_double(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__leakyrelu__6__T_tensor_float(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__leakyrelu__6__T_tensor_float16(
+execute_operator__ai_onnx__leakyrelu__6(
     Onnx__NodeProto *ctx
 );
 

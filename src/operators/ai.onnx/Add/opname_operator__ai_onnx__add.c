@@ -2,11 +2,15 @@
 
 #include "operators/operator_set.h"
 
+extern operator_set_opversion opversion_operator__ai_onnx__add__1;
+extern operator_set_opversion opversion_operator__ai_onnx__add__6;
 extern operator_set_opversion opversion_operator__ai_onnx__add__7;
 
 operator_set_opname opname_operator__ai_onnx__add = {
     .name = "Add",
     .opversions = {
+        &opversion_operator__ai_onnx__add__1,
+        &opversion_operator__ai_onnx__add__6,
         &opversion_operator__ai_onnx__add__7,
         NULL
     }

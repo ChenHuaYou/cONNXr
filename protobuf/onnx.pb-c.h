@@ -6,6 +6,7 @@
 
 #include "protobuf-c.h"
 #include <errno.h>
+#include <stdbool.h>
 
 PROTOBUF_C__BEGIN_DECLS
 
@@ -367,6 +368,7 @@ struct  _Onnx__NodeProto
    *do operator_executer
    */
   operator_executer executer;
+  void *executer_context;
   /*
    * An optional identifier for this node in a graph.
    * This field MAY be absent in ths version of the IR.
@@ -468,6 +470,7 @@ struct  _Onnx__ModelProto
    */
   size_t n_metadata_props;
   Onnx__StringStringEntryProto **metadata_props;
+  bool resolved;
 };
 #define ONNX__MODEL_PROTO__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&onnx__model_proto__descriptor) \
@@ -550,7 +553,7 @@ struct  _Onnx__GraphProto
    */
   size_t n_input;
   Onnx__ValueInfoProto **input;
-  Onnx__TensorProto **inputs;
+  Onnx__TensorProto ***inputs;
 
   size_t n_output;
   Onnx__ValueInfoProto **output;

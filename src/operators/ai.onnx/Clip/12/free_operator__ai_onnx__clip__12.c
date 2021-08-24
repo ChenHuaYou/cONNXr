@@ -14,9 +14,9 @@ free_operator__ai_onnx__clip__12(
 
     /* UNCOMMENT AS NEEDED */
 
-    // Onnx__TensorProto *i_input = searchInputByIndex(ctx, 0);
-    // Onnx__TensorProto *i_min = searchInputByIndex(ctx, 1);
-    // Onnx__TensorProto *i_max = searchInputByIndex(ctx, 2);
+    //Onnx__TensorProto *i_input = searchInputByIndex(ctx, 0);
+    //Onnx__TensorProto *i_min = searchInputByIndex(ctx, 1);
+    //Onnx__TensorProto *i_max = searchInputByIndex(ctx, 2);
 
     // TRACE_TENSOR(2, true, i_input);
     // TRACE_TENSOR(2, min, i_min);
@@ -26,7 +26,7 @@ free_operator__ai_onnx__clip__12(
 
     
 
-    // Onnx__TensorProto *o_output = searchOutputByIndex(ctx, 0);
+    //Onnx__TensorProto *o_output = searchOutputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, o_output);
 

@@ -2,11 +2,17 @@
 
 #include "operators/operator_set.h"
 
+extern operator_set_opversion opversion_operator__ai_onnx__constant__1;
+extern operator_set_opversion opversion_operator__ai_onnx__constant__9;
+extern operator_set_opversion opversion_operator__ai_onnx__constant__11;
 extern operator_set_opversion opversion_operator__ai_onnx__constant__12;
 
 operator_set_opname opname_operator__ai_onnx__constant = {
     .name = "Constant",
     .opversions = {
+        &opversion_operator__ai_onnx__constant__1,
+        &opversion_operator__ai_onnx__constant__9,
+        &opversion_operator__ai_onnx__constant__11,
         &opversion_operator__ai_onnx__constant__12,
         NULL
     }

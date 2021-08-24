@@ -2,11 +2,17 @@
 
 #include "operators/operator_set.h"
 
+extern operator_set_opversion opversion_operator__ai_onnx__clip__1;
+extern operator_set_opversion opversion_operator__ai_onnx__clip__6;
+extern operator_set_opversion opversion_operator__ai_onnx__clip__11;
 extern operator_set_opversion opversion_operator__ai_onnx__clip__12;
 
 operator_set_opname opname_operator__ai_onnx__clip = {
     .name = "Clip",
     .opversions = {
+        &opversion_operator__ai_onnx__clip__1,
+        &opversion_operator__ai_onnx__clip__6,
+        &opversion_operator__ai_onnx__clip__11,
         &opversion_operator__ai_onnx__clip__12,
         NULL
     }

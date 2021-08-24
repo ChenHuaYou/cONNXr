@@ -13,7 +13,7 @@
  * @return          Status code
  *
  * Matrix product that behaves like numpy.matmul: https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.matmul.html
- *
+ * 
  * Constraint T:
  *   Constrain input and output types to float/int tensors.
  *   Allowed Types: tensor_double, tensor_float, tensor_float16, tensor_int32,
@@ -22,7 +22,7 @@
  *   N-dimensional matrix A
  *   Allowed Types: tensor_double, tensor_float, tensor_float16, tensor_int32,
  *                  tensor_int64, tensor_uint32, tensor_uint64
- *
+ * 
  * Input T B:
  *   N-dimensional matrix B
  *   Allowed Types: tensor_double, tensor_float, tensor_float16, tensor_int32,
@@ -32,12 +32,12 @@
  *   Allowed Types: tensor_double, tensor_float, tensor_float16, tensor_int32,
  *                  tensor_int64, tensor_uint32, tensor_uint64
 
- *
- * @since version 9
- *
+*
+* @since version 9
+*
  * @see io/onnx/onnx/defs/math/defs.cc:1035
  * @see https://github.com/onnx/onnx/blob/master/docs/Operators.md#MatMul
- */
+*/
 
 operator_status
 prepare_operator__ai_onnx__matmul__9(
@@ -50,43 +50,8 @@ typedef struct {
 // no attributes
 } context_operator__ai_onnx__matmul__9;
 
-operator_executer
-resolve_operator__ai_onnx__matmul__9(
-    Onnx__NodeProto *ctx
-);
-
 operator_status
-execute_operator__ai_onnx__matmul__9__T_tensor_double(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__matmul__9__T_tensor_float(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__matmul__9__T_tensor_float16(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__matmul__9__T_tensor_int32(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__matmul__9__T_tensor_int64(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__matmul__9__T_tensor_uint32(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__matmul__9__T_tensor_uint64(
+execute_operator__ai_onnx__matmul__9(
     Onnx__NodeProto *ctx
 );
 

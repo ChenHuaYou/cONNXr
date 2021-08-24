@@ -2,11 +2,13 @@
 
 #include "operators/operator_set.h"
 
+extern operator_set_opversion opversion_operator__ai_onnx__matmul__1;
 extern operator_set_opversion opversion_operator__ai_onnx__matmul__9;
 
 operator_set_opname opname_operator__ai_onnx__matmul = {
     .name = "MatMul",
     .opversions = {
+        &opversion_operator__ai_onnx__matmul__1,
         &opversion_operator__ai_onnx__matmul__9,
         NULL
     }

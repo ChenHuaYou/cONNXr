@@ -2,11 +2,15 @@
 
 #include "operators/operator_set.h"
 
+extern operator_set_opversion opversion_operator__ai_onnx__argmax__1;
+extern operator_set_opversion opversion_operator__ai_onnx__argmax__11;
 extern operator_set_opversion opversion_operator__ai_onnx__argmax__12;
 
 operator_set_opname opname_operator__ai_onnx__argmax = {
     .name = "ArgMax",
     .opversions = {
+        &opversion_operator__ai_onnx__argmax__1,
+        &opversion_operator__ai_onnx__argmax__11,
         &opversion_operator__ai_onnx__argmax__12,
         NULL
     }

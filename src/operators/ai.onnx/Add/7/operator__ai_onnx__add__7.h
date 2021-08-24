@@ -13,9 +13,9 @@
  * @return          Status code
  *
  * Performs element-wise binary addition (with Numpy-style broadcasting support).
- *
+ * 
  * This operator supports **multidirectional (i.e., Numpy-style) broadcasting**; for more details please check [the doc](Broadcasting.md).
- *
+ * 
  * Constraint T:
  *   Constrain input and output types to high-precision numeric tensors.
  *   Allowed Types: tensor_double, tensor_float, tensor_float16, tensor_int32,
@@ -24,7 +24,7 @@
  *   First operand.
  *   Allowed Types: tensor_double, tensor_float, tensor_float16, tensor_int32,
  *                  tensor_int64, tensor_uint32, tensor_uint64
- *
+ * 
  * Input T B:
  *   Second operand.
  *   Allowed Types: tensor_double, tensor_float, tensor_float16, tensor_int32,
@@ -34,12 +34,12 @@
  *   Allowed Types: tensor_double, tensor_float, tensor_float16, tensor_int32,
  *                  tensor_int64, tensor_uint32, tensor_uint64
 
- *
- * @since version 7
- *
+*
+* @since version 7
+*
  * @see io/onnx/onnx/defs/math/defs.cc:124
  * @see https://github.com/onnx/onnx/blob/master/docs/Operators.md#Add
- */
+*/
 
 operator_status
 prepare_operator__ai_onnx__add__7(
@@ -52,43 +52,8 @@ typedef struct {
 // no attributes
 } context_operator__ai_onnx__add__7;
 
-operator_executer
-resolve_operator__ai_onnx__add__7(
-    Onnx__NodeProto *ctx
-);
-
 operator_status
-execute_operator__ai_onnx__add__7__T_tensor_double(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__add__7__T_tensor_float(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__add__7__T_tensor_float16(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__add__7__T_tensor_int32(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__add__7__T_tensor_int64(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__add__7__T_tensor_uint32(
-    Onnx__NodeProto *ctx
-);
-
-operator_status
-execute_operator__ai_onnx__add__7__T_tensor_uint64(
+execute_operator__ai_onnx__add__7(
     Onnx__NodeProto *ctx
 );
 

@@ -14,7 +14,7 @@ free_operator__ai_onnx__sigmoid__6(
 
     /* UNCOMMENT AS NEEDED */
 
-    // Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
+    //Onnx__TensorProto *i_X = searchInputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, i_X);
 
@@ -22,7 +22,7 @@ free_operator__ai_onnx__sigmoid__6(
 
     
 
-    // Onnx__TensorProto *o_Y = searchOutputByIndex(ctx, 0);
+    //Onnx__TensorProto *o_Y = searchOutputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, o_Y);
 
@@ -38,7 +38,7 @@ free_operator__ai_onnx__sigmoid__6(
 
 
     /* FREE OUTPUT DATA_TYPE AND SHAPE HERE */
-    /* DO NO FREE THE TENSOR ITSELF */
+    /* DO NOT FREE THE TENSOR ITSELF */
 
     // freeTensorData(o_Y);
     // free(o_Y->dims);

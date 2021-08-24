@@ -34,28 +34,28 @@ operator_check_range_(char                *operator,
 }
 
 bool
-operator_check_range(node_context *ctx, operator_info *info)
+operator_check_range(Onnx__NodeProto *ctx, operator_info *info)
 {
-  char *name = (ctx->onnx_node->name) ? ctx->onnx_node->name : "";
+  char *name = (ctx->name) ? ctx->name : "";
   bool valid = true;
   valid &= operator_check_range_(info->name,
                                  name,
                                  &info->range_input,
-                                 ctx->onnx_node->n_input);
+                                 ctx->n_input);
   valid &= operator_check_range_(info->name,
                                  name,
                                  &info->range_output,
-                                 ctx->onnx_node->n_output);
+                                 ctx->n_output);
   return valid;
 }
 
 bool
-operator_check_attributes(node_context *ctx, operator_info *info)
+operator_check_attributes(Onnx__NodeProto *ctx, operator_info *info)
 {
-  char *name = (ctx->onnx_node->name) ? ctx->onnx_node->name : "";
+  char *name = (ctx->name) ? ctx->name : "";
   for (size_t i_attr = 0; i_attr < info->n_attribute; i_attr++) {
     operator_info_attribute* cond = &info->attribute[i_attr];
-    Onnx__AttributeProto* cattr = ctx->onnx_node->attribute[i_attr];
+    Onnx__AttributeProto* cattr = ctx->attribute[i_attr];
     if (!cattr) {
       if (cond->optional) {
         continue;
@@ -203,19 +203,19 @@ operator_check_tensors_(char                  *operator,
 }
 
 bool
-operator_check_tensors(node_context *ctx, operator_info *info)
+operator_check_tensors(Onnx__NodeProto *ctx, operator_info *info)
 {
-  char *name = (ctx->onnx_node->name) ? ctx->onnx_node->name : "";
+  char *name = (ctx->name) ? ctx->name : "";
   bool valid = true;
   valid &= operator_check_tensors_(info->name,
                                    name,
-                                   ctx->onnx_node->n_input,
+                                   ctx->n_input,
                                    ctx->inputs,
                                    info->n_input,
                                    info->input);
   valid &= operator_check_tensors_(info->name,
                                    name,
-                                   ctx->onnx_node->n_output,
+                                   ctx->n_output,
                                    ctx->outputs,
                                    info->n_output,
                                    info->output);
@@ -223,9 +223,9 @@ operator_check_tensors(node_context *ctx, operator_info *info)
 }
 
 bool
-operator_check_constraint(node_context *ctx, operator_info *info)
+operator_check_constraint(Onnx__NodeProto *ctx, operator_info *info)
 {
-  char *name = (ctx->onnx_node->name) ? ctx->onnx_node->name : "";
+  char *name = (ctx->name) ? ctx->name : "";
 
   for (size_t i_cons = 0; i_cons < info->n_constraint; i_cons++) {
     operator_info_constraint *constraint = &info->constraint[i_cons];
@@ -301,7 +301,7 @@ operator_check_constraint(node_context *ctx, operator_info *info)
 }
 
 bool
-operator_check(node_context *ctx, operator_info *info)
+operator_check(Onnx__NodeProto *ctx, operator_info *info)
 {
   bool valid = true;
   valid &= operator_check_range(ctx, info);

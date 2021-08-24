@@ -14,7 +14,7 @@ free_operator__ai_onnx__transpose__1(
 
     /* UNCOMMENT AS NEEDED */
 
-    // Onnx__TensorProto *i_data = searchInputByIndex(ctx, 0);
+    //Onnx__TensorProto *i_data = searchInputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, i_data);
 
@@ -22,7 +22,7 @@ free_operator__ai_onnx__transpose__1(
 
     // TRACE_ATTRIBUTE(2, a_perm, a_perm);
 
-    // Onnx__TensorProto *o_transposed = searchOutputByIndex(ctx, 0);
+    //Onnx__TensorProto *o_transposed = searchOutputByIndex(ctx, 0);
 
     // TRACE_TENSOR(2, true, o_transposed);
 
